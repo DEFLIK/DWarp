@@ -17,7 +17,7 @@ namespace DWarp
             {
                 Location = new Point(0, 30),
                 Size = new Size(150, 100),
-                Text = "Move = WASD\nResize = MouseWheel\nUndo = Q\n Redo = E\nTake - Place Cube = F\nReset = R\nWarpPlayer = Space\nSelectWarpedPlayer = V"
+                Text = "Move = WASD\nResize = MouseWheel\nUndo = Q\nRedo = E\nTake/Place Cube = Space\nReset = R\nWarpPlayer = F\nSelectWarpedPlayer = V"
             };
             Controls.Add(controlsInfo);
 
