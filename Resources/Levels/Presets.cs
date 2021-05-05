@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
+using DWarp.Core.Models;
 
-namespace DWarp
+namespace DWarp.Resources.Levels
 {
     public static class Presets
     {
@@ -20,11 +16,11 @@ namespace DWarp
 ..B+..+.
 .PC+..+.
 ...+..+.
-",15,20,
-                new Wire[] 
-                { 
-                    new Wire(new Point(2, 1), new Point(3, 3)), 
-                    new Wire(new Point(2, 5), new Point(6, 3)) 
+", 15, 20,
+                new Wire[]
+                {
+                    new Wire(new Point(2, 1), new Point(3, 3)),
+                    new Wire(new Point(2, 5), new Point(6, 3))
                 }
             );
 
@@ -40,7 +36,7 @@ namespace DWarp
 .........
 .B..B..B.
 ....B....
-",28,0,
+", 28, 0,
                 new Wire[]
                 {
                     new Wire(new Point(4, 7), new Point(1, 2)),

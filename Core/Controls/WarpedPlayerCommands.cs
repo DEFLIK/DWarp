@@ -1,4 +1,6 @@
-﻿namespace DWarp
+﻿using DWarp.Core.Models;
+
+namespace DWarp.Core.Controls
 {
     public class Move : ICommand
     {

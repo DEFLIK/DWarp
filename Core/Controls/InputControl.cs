@@ -1,6 +1,7 @@
 ﻿using System.Windows.Forms;
+using DWarp.Core.Drawing;
 
-namespace DWarp
+namespace DWarp.Core.Controls
 {
     static class InputControl
     {
@@ -10,7 +11,7 @@ namespace DWarp
         {
             switch (key)
             {
-                case Keys.M:
+                case Keys.Space:
                     if (Game.Player.PickedCube == null)
                         PlayerCommands.TakeCube();
                     else
@@ -19,7 +20,7 @@ namespace DWarp
                 case Keys.B:
                     Animations.Fall(Game.Player, 10);
                     break;
-                case Keys.Space:
+                case Keys.F:
                     Game.DoWarp();
                     break;
                 case Keys.W:

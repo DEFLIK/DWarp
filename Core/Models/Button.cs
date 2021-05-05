@@ -1,6 +1,8 @@
 ﻿using System.Drawing;
+using DWarp.Core.Controls.Factorys;
+using DWarp.Core.Drawing;
 
-namespace DWarp
+namespace DWarp.Core.Models
 {
     public class Button : Creature
     {
@@ -12,7 +14,7 @@ namespace DWarp
 
         public void Update()
         {
-            Pressed = Game.Cubes[Location.X,Location.Y] is Cube;
+            Pressed = Game.Cubes[Location.X, Location.Y] is Cube;
             Sprite.Image = Pressed ? pressedImage : unpressedImage;
             LinkedDoor.Opened = Pressed;
             if (Pressed)

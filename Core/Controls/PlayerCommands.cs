@@ -1,10 +1,13 @@
-﻿namespace DWarp
+﻿using DWarp.Core.Controls.Factorys;
+using DWarp.Core.Models;
+
+namespace DWarp.Core.Controls
 {
     public static class PlayerCommands
     {
         public static void Move(int deltaX, int deltaY)
         {
-            if(Game.CommandsStack.Stack.Count == 0 && Game.CurrentLevel.TimeLimit > 0)
+            if (Game.CommandsStack.Stack.Count == 0 && Game.CurrentLevel.TimeLimit > 0)
                 Game.StartTimer();
             if (Game.CommandsStack.Stack.Count >= Game.CommandsStack.Limit)
                 return;

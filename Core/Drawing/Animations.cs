@@ -1,6 +1,7 @@
 ﻿using System.Timers;
+using DWarp.Core.Models;
 
-namespace DWarp
+namespace DWarp.Core.Drawing
 {
     static class Animations
     {

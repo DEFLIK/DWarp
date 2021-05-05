@@ -1,6 +1,8 @@
 ﻿using System.Drawing;
+using DWarp.Core.Controls.Factorys;
+using DWarp.Core.Drawing;
 
-namespace DWarp
+namespace DWarp.Core.Models
 {
     public class Creature
     {

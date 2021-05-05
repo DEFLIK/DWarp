@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Drawing;
+using DWarp.Core.Models;
 
-namespace DWarp
+namespace DWarp.Core.Controls.Factorys
 {
     class MapCreator
     {
@@ -47,13 +48,13 @@ namespace DWarp
             }
 
             var resultCreature = CreatureFactory.GetNewCreature(type);
-            resultCreature.Location = new Point(x,y);
+            resultCreature.Location = new Point(x, y);
             return resultCreature;
         }
 
         public static void SpawnDynamicCreatures(Creature[,] map)
         {
-            foreach(var creature in map)
+            foreach (var creature in map)
             {
                 var pos = creature.Location;
                 switch (creature.Type)
@@ -63,16 +64,16 @@ namespace DWarp
                         Game.WarpedPlayer.Location = new Point(pos.X, pos.Y);
                         break;
                     case CreatureType.CubeSpawn:
-                        Game.Cubes[pos.X,pos.Y] = new Cube(Properties.Resources.Cube);
+                        Game.Cubes[pos.X, pos.Y] = new Cube(Properties.Resources.Cube);
                         Game.Cubes[pos.X, pos.Y].Location = new Point(pos.X, pos.Y);
                         break;
-                }   
+                }
             }
         }
 
         public static void WireButtonsWithDoors(Creature[,] map, Wire[] wires)
         {
-            foreach(var wire in wires)
+            foreach (var wire in wires)
             {
                 var button = map[wire.Button.X, wire.Button.Y] as Button;
                 var door = map[wire.Door.X, wire.Door.Y] as Door;

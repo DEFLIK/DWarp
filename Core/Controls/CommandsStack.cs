@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DWarp
+namespace DWarp.Core.Controls
 {
     public interface ICommand
     {
@@ -41,7 +41,7 @@ namespace DWarp
             }
         }
 
-        public void RollForward() 
+        public void RollForward()
         {
             if (Canceled.Count > 0)
             {

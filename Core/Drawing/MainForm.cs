@@ -1,18 +1,23 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
+using DWarp.Core.Controls.Factorys;
+using DWarp.Core.Controls;
+using DWarp.Core.Models;
+using DWarp.Core;
 
 namespace DWarp
 {
     public partial class MainForm : Form
     {
+        private static Bitmap floorImage = Properties.Resources.Floor; // ToRefactor...
         public MainForm(DirectoryInfo imagesDirectory = null)
         {
             var controlsInfo = new Label // ToUpgrade...
             {
                 Location = new Point(0, 30),
                 Size = new Size(150, 100),
-                Text = "Move = WASD\nResize = MouseWheel\nUndo = Q\nReset = R\nWarpPlayer = Space\nSelectWarpedPlayer = V"
+                Text = "Move = WASD\nResize = MouseWheel\nUndo = Q\n Redo = E\nTake - Place Cube = F\nReset = R\nWarpPlayer = Space\nSelectWarpedPlayer = V"
             };
             Controls.Add(controlsInfo);
 
@@ -50,9 +55,10 @@ namespace DWarp
             {
                 creature.Sprite.Image.MakeTransparent(Color.White);
                 UpdateSprite(creature);
-                if(creature.Type == CreatureType.Button || creature.Type == CreatureType.Door)
-                    g.DrawImage(Properties.Resources.floorNNS, creature.Sprite.Rectangle);
+                if (creature.Type == CreatureType.Button || creature.Type == CreatureType.Door)
+                    g.DrawImage(floorImage, creature.Sprite.Rectangle);
                 g.DrawImage(creature.Sprite.Image, creature.Sprite.Rectangle);
+                creature.Sprite.Image.SetResolution(1, 1);
             }
             foreach(var cube in Game.Cubes)
             {

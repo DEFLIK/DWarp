@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace DWarp
+namespace DWarp.Core.Models
 {
     public class Wire
     {

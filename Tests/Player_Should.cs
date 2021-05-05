@@ -1,9 +1,12 @@
 ﻿using System.Drawing;
+using DWarp.Core;
+using DWarp.Core.Controls;
+using DWarp.Resources.Levels;
 using NUnit.Framework;
 
 namespace DWarp
 {
-	[TestFixture]
+    [TestFixture]
 	public class Player_Should //ToRefactor...
 	{
 		private static string moveTestMap =  @"

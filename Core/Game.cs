@@ -1,6 +1,10 @@
 ﻿using System.Timers;
+using DWarp.Core.Controls;
+using DWarp.Core.Controls.Factorys;
+using DWarp.Core.Models;
+using DWarp.Resources.Levels;
 
-namespace DWarp
+namespace DWarp.Core
 {
     public static class Game
     {

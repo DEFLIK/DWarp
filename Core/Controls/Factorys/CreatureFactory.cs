@@ -1,6 +1,7 @@
 ﻿using System;
+using DWarp.Core.Models;
 
-namespace DWarp
+namespace DWarp.Core.Controls.Factorys
 {
     public enum CreatureType
     {
@@ -21,7 +22,7 @@ namespace DWarp
             switch (type)
             {
                 case CreatureType.Void:
-                    return new Creature(type, Properties.Resources.floorNNS);
+                    return new Creature(type, Properties.Resources.Floor);
                 case CreatureType.Wall:
                     return new Creature(type, Properties.Resources.HorizontalWall);
                 case CreatureType.Button:
@@ -31,7 +32,7 @@ namespace DWarp
                 case CreatureType.Door:
                     return new Door(Properties.Resources.Door);
                 case CreatureType.CubeSpawn:
-                    return new Creature(type, Properties.Resources.floorNNS);
+                    return new Creature(type, Properties.Resources.Floor);
                 default:
                     throw new ArgumentException($"{type} is not registred Creature type");
             }

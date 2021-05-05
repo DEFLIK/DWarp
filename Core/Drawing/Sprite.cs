@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
+using DWarp.Core.Models;
 
-namespace DWarp
+namespace DWarp.Core.Drawing
 {
     public class Sprite
     {

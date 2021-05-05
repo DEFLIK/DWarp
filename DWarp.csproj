@@ -112,28 +112,13 @@
     <Content Include="Resources\Audio\WarpOut.wav" />
     <Content Include="Resources\Sprites\ButtonF.png" />
     <Content Include="Resources\Sprites\ButtonT.png" />
-    <Content Include="Resources\Sprites\CornerDL.png" />
-    <Content Include="Resources\Sprites\CornerDR.png" />
-    <Content Include="Resources\Sprites\CornerUL.png" />
-    <Content Include="Resources\Sprites\CornerUR.png" />
     <Content Include="Resources\Sprites\Cube.png" />
     <Content Include="Resources\Sprites\Door.png" />
-    <Content Include="Resources\Sprites\floorDLS.png" />
-    <Content Include="Resources\Sprites\floorDNS.png" />
-    <Content Include="Resources\Sprites\floorDRS.png" />
-    <Content Include="Resources\Sprites\floorNLS.png" />
-    <Content Include="Resources\Sprites\floorNNS.png" />
-    <Content Include="Resources\Sprites\floorNRS.png" />
-    <Content Include="Resources\Sprites\floorULS.png" />
-    <Content Include="Resources\Sprites\floorUNS.png" />
-    <Content Include="Resources\Sprites\floorURS.png" />
+    <Content Include="Resources\Sprites\Floor.png" />
     <Content Include="Resources\Sprites\Player.png" />
-    <Content Include="Resources\Sprites\SideD.png" />
-    <Content Include="Resources\Sprites\SideL.png" />
-    <Content Include="Resources\Sprites\SideR.png" />
-    <Content Include="Resources\Sprites\SideU.png" />
     <Content Include="Resources\Sprites\Spawn.png" />
     <Content Include="Resources\Sprites\HorizontalWall.png" />
+    <Content Include="ToDo.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
