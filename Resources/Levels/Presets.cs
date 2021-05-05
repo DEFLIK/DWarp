@@ -1,17 +1,22 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 using DWarp.Core.Models;
 
 namespace DWarp.Resources.Levels
 {
     public static class Presets
     {
-        public static readonly Level TestLevel = new Level
+        public static readonly Dictionary<string, Level> Levels = new Dictionary<string,Level>();
+
+        static Presets()
+        {
+            Levels.Add("defaultLevel", new Level
             (
 @"
 ...+..+.
 ..B+..+.
 ...+++++
-...D..D.
+...D..DE
 ...+++++
 ..B+..+.
 .PC+..+.
@@ -22,13 +27,13 @@ namespace DWarp.Resources.Levels
                     new Wire(new Point(2, 1), new Point(3, 3)),
                     new Wire(new Point(2, 5), new Point(6, 3))
                 }
-            );
+            ));
 
-        public static readonly Level HardLevel = new Level
+            Levels.Add("hardLevel", new Level
             (
 @"
 ....+....
-....D....
+....D.E..
 +D+++++++
 ..+C.B+C.
 ..+.P.+..
@@ -45,6 +50,7 @@ namespace DWarp.Resources.Levels
                     new Wire(new Point(7, 7), new Point(7, 5)),
                     new Wire(new Point(4, 8), new Point(4, 1))
                 }
-            );
+            ));
+        }
     }
 }

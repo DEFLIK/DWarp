@@ -43,6 +43,9 @@ namespace DWarp.Core.Controls.Factorys
                 case 'C':
                     type = CreatureType.CubeSpawn;
                     break;
+                case 'E':
+                    type = CreatureType.Exit;
+                    break;
                 default:
                     throw new Exception($"wrong character for ICreature {c}");
             }

@@ -5,6 +5,7 @@ using DWarp.Core.Controls.Factorys;
 using DWarp.Core.Controls;
 using DWarp.Core.Models;
 using DWarp.Core;
+using DWarp.Resources.Levels;
 
 namespace DWarp
 {
@@ -13,6 +14,8 @@ namespace DWarp
         private static Bitmap floorImage = Properties.Resources.Floor; // ToRefactor...
         public MainForm(DirectoryInfo imagesDirectory = null)
         {
+            InitializeComponent();
+
             var controlsInfo = new Label // ToUpgrade...
             {
                 Location = new Point(0, 30),
@@ -21,25 +24,82 @@ namespace DWarp
             };
             Controls.Add(controlsInfo);
 
+            // ToDo...
+            //var drawWires = false;
+            //var controlTable = new TableLayoutPanel(); // ToUpgrade...
+            //controlTable.Size = new Size(150, Presets.Levels.Count * 25);
+            //    var wireLabel = new Label() { Text = "Show Wires", Font = new Font("Arial", 12, FontStyle.Underline), BackColor = Color.Black, ForeColor = Color.White };
+            //    wireLabel.Click += (sender, args) => drawWires = drawWires ? false: true;
+            //    controlTable.Controls.Add(wireLabel);
+            //Controls.Add(controlTable);
+
+            var levelsTable = new TableLayoutPanel(); // ToUpgrade...
+            levelsTable.Size = new Size(150, Presets.Levels.Count * 25);
+            foreach (var level in Presets.Levels)
+            {
+                levelsTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 25));
+                var levelLabel = new Label() { Text = level.Key, Font = new Font("Arial", 12, FontStyle.Underline), BackColor = Color.Black, ForeColor = Color.White};
+                levelLabel.Click += (sender, args) => Game.Load(level.Value);
+                levelsTable.Controls.Add(levelLabel);
+            }
+            Controls.Add(levelsTable);
+
+            SetAlphaBending(Game.WarpedPlayer.Sprite.Image, 140);
+            Game.WarpedPlayer.Sprite.Image.MakeTransparent(Color.White);
             Game.Player.Sprite.Image.MakeTransparent(Color.White);
 
             Paint += (sender, args) =>
             {
-                controlsInfo.Update(); // Optimize...
                 var g = args.Graphics;
                 g.TranslateTransform(ClientSize.Width / 2, ClientSize.Height / 2);
-                g.ScaleTransform(2, 2);
                 DrawGameCreatures(Game.Map, g);
+                //ToDo...
+                //if (drawWires)
+                //    foreach (var wire in Game.CurrentLevel.Wires)
+                //        g.DrawLine(new Pen(new SolidBrush(Color.Green)), wire.Button.X * Game.SpritesSize, -wire.Button.Y * Game.SpritesSize, wire.Door.X * Game.SpritesSize, -wire.Door.Y * Game.SpritesSize);
                 g.ResetTransform();
                 UpdateGameInfo(g);
-                Invalidate();
             };
 
-            KeyDown += (sender, args) => InputControl.ApplyKey(args.KeyCode);
+            KeyDown += (sender, args) =>
+            {
+                InputControl.ApplyKey(args.KeyCode);
+            };
 
-            MouseWheel += (sender, args) => InputControl.ApllyMouseScroll(args.Delta);
+            Load += (sender, args) =>
+            {
+                OnSizeChanged(args);
+            };
 
-            InitializeComponent();
+            SizeChanged += (sender, args) =>
+            {
+                levelsTable.Location = new Point(0, ClientSize.Height - levelsTable.Height);
+                foreach(var creature in Game.Map)
+                    UpdateSprite(creature);
+                foreach(var cube in Game.Cubes)
+                    if(cube != null)
+                        UpdateSprite(cube);
+            };
+
+            MouseWheel += (sender, args) =>
+            {
+                InputControl.ApllyMouseScroll(args.Delta); 
+            };
+
+            var invalidatingTimer = new Timer();
+            invalidatingTimer.Interval = 1;
+            invalidatingTimer.Tick += (sender, args) => Invalidate();
+            invalidatingTimer.Start();
+        }
+
+        public void SetAlphaBending(Bitmap image, int alpha)
+        {
+            for(var x = 0; x < image.Width; x++)
+                for(var y = 0; y < image.Height; y++)
+                {
+                    var pixel = image.GetPixel(x, y);
+                    image.SetPixel(x, y, Color.FromArgb(alpha, pixel));
+                }
         }
 
         public void UpdateGameInfo(Graphics g)

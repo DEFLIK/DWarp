@@ -1,4 +1,5 @@
-﻿using DWarp.Core.Models;
+﻿using DWarp.Core.Controls.Factorys;
+using DWarp.Core.Models;
 
 namespace DWarp.Core.Controls
 {
@@ -15,16 +16,27 @@ namespace DWarp.Core.Controls
             this.deltaY = deltaY;
         }
 
-        public void Execute()
+        public bool Execute()
         {
+            if (!CanStandAt(warpedPlayer.Location.X + deltaX, warpedPlayer.Location.Y + deltaY))
+                return false;
             warpedPlayer.Location.X += deltaX;
             warpedPlayer.Location.Y += deltaY;
+            return true;
         }
 
-        public void Undo()
+        public bool Undo()
         {
+            if (!CanStandAt(warpedPlayer.Location.X - deltaX, warpedPlayer.Location.Y - deltaY))
+                return false;
             warpedPlayer.Location.X -= deltaX;
             warpedPlayer.Location.Y -= deltaY;
+            return true;
+        }
+
+        private static bool CanStandAt(int x, int y)
+        {
+            return Game.Map[x, y].Type == CreatureType.Door ? (Game.Map[x, y] as Door).Opened : true;
         }
     }
 
@@ -36,14 +48,16 @@ namespace DWarp.Core.Controls
             this.warpedPlayer = warpedPlayer;
         }
 
-        public void Execute()
+        public bool Execute()
         {
             CubeActions.Take(warpedPlayer);
+            return true;
         }
 
-        public void Undo()
+        public bool Undo()
         {
             CubeActions.Place(warpedPlayer);
+            return true;
         }
     }
     public class PlaceCube : ICommand
@@ -54,14 +68,16 @@ namespace DWarp.Core.Controls
             this.warpedPlayer = warpedPlayer;
         }
 
-        public void Execute()
+        public bool Execute()
         {
             CubeActions.Place(warpedPlayer);
+            return true;
         }
 
-        public void Undo()
+        public bool Undo()
         {
             CubeActions.Take(warpedPlayer);
+            return true;
         }
     }
 }

@@ -22,13 +22,15 @@ namespace DWarp.Core.Controls
                 Game.Player.Location.X = resPosX;
                 Game.Player.Location.Y = resPosY;
             }
+            if (Game.Map[resPosX, resPosY].Type == CreatureType.Exit)
+                Game.Load(Game.CurrentLevel);
         }
 
         public static void TakeCube()
         {
             var commandCompleted = CubeActions.Take(Game.Player);
 
-            if (commandCompleted)
+            if (commandCompleted && !Game.IsWarped)
             {
                 var warpedPlayeCommand = new TakeCube(Game.WarpedPlayer);
                 Game.CommandsStack.AddCommand(warpedPlayeCommand);
@@ -39,7 +41,7 @@ namespace DWarp.Core.Controls
         {
             var commandCompleted = CubeActions.Place(Game.Player);
 
-            if (commandCompleted)
+            if (commandCompleted && !Game.IsWarped)
             {
                 var warpedPlayeCommand = new PlaceCube(Game.WarpedPlayer);
                 Game.CommandsStack.AddCommand(warpedPlayeCommand);

@@ -8,7 +8,7 @@ namespace DWarp.Core
 {
     public static class Game
     {
-        public static Level CurrentLevel = Presets.HardLevel;
+        public static Level CurrentLevel;
 
         public static Creature[,] Map;
         public static Cube[,] Cubes;
@@ -23,20 +23,23 @@ namespace DWarp.Core
 
         public static void Load(Level level)
         {
+            CurrentLevel = level;
             Time = level.TimeLimit;
             Map = MapCreator.CreateMap(level.Map);
             Cubes = new Cube[Map.GetLength(0), Map.GetLength(1)];
             MapCreator.SpawnDynamicCreatures(Map);
             if (level.Wires != null)
                 MapCreator.WireButtonsWithDoors(Map, level.Wires);
-            SpritesSize = 230 / Map.GetLength(0);
-            CommandsStack = new CommandsStack<ICommand>(CurrentLevel.StepsLimit);
+            SpritesSize = 460 / Map.GetLength(0);
+            CommandsStack = new CommandsStack<ICommand>(level.StepsLimit);
             WarpedPlayer.PickedCube = null;
             Player.PickedCube = null;
             if (IsWarped)
                 DoWarp();
             if (level.TimeLimit > 0)
             {
+                if (timer != null)
+                    timer.Dispose();
                 timer = new Timer();
                 timer.Interval = 1000;
                 timer.Elapsed += (sender, args) =>

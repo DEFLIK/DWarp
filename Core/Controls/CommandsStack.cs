@@ -4,8 +4,8 @@ namespace DWarp.Core.Controls
 {
     public interface ICommand
     {
-        void Execute();
-        void Undo();
+        bool Execute();
+        bool Undo();
     }
 
     public class CommandsStack<TItem>
@@ -35,9 +35,9 @@ namespace DWarp.Core.Controls
         {
             if (Stack.Count > 0)
             {
-                var command = Stack.Pop();
-                command.Undo();
-                Canceled.Push(command);
+                var command = Stack.Peek();
+                if(command.Undo())
+                    Canceled.Push(Stack.Pop());
             }
         }
 
@@ -45,9 +45,9 @@ namespace DWarp.Core.Controls
         {
             if (Canceled.Count > 0)
             {
-                var command = Canceled.Pop();
-                command.Execute();
-                Stack.Push(command);
+                var command = Canceled.Peek();
+                if(command.Execute())
+                    Stack.Push(Canceled.Pop());
             }
         }
 

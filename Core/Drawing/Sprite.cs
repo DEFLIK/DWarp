@@ -5,6 +5,7 @@ namespace DWarp.Core.Drawing
 {
     public class Sprite
     {
+        //public static (int X, int Y) GlobalOffset = (0, 0);
         public Rectangle Rectangle;
         public Bitmap Image;
         public readonly Creature Owner;
