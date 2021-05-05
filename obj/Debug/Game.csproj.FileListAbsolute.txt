@@ -1,0 +1,32 @@
+C:\Users\klimm\Desktop\Game\Game\bin\Debug\Game.exe.config
+C:\Users\klimm\Desktop\Game\Game\bin\Debug\Game.exe
+C:\Users\klimm\Desktop\Game\Game\bin\Debug\Game.pdb
+C:\Users\klimm\Desktop\Game\Game\obj\Debug\Game.csprojAssemblyReference.cache
+C:\Users\klimm\Desktop\Game\Game\obj\Debug\Game.Properties.Resources.resources
+C:\Users\klimm\Desktop\Game\Game\obj\Debug\Game.csproj.GenerateResource.cache
+C:\Users\klimm\Desktop\Game\Game\obj\Debug\Game.csproj.CoreCompileInputs.cache
+C:\Users\klimm\Desktop\Game\Game\obj\Debug\Game.exe
+C:\Users\klimm\Desktop\Game\Game\obj\Debug\Game.pdb
+C:\Users\klimm\Desktop\Game\obj\Debug\Game.csprojAssemblyReference.cache
+C:\Users\klimm\Desktop\Game\obj\Debug\Game.Properties.Resources.resources
+C:\Users\klimm\Desktop\Game\obj\Debug\Game.csproj.GenerateResource.cache
+C:\Users\klimm\Desktop\Game\obj\Debug\Game.csproj.CoreCompileInputs.cache
+C:\Users\klimm\Desktop\Game\obj\Debug\Game.exe
+C:\Users\klimm\Desktop\Game\obj\Debug\Game.pdb
+C:\Users\klimm\Desktop\Game\bin\Debug\Game.exe.config
+C:\Users\klimm\Desktop\Game\bin\Debug\Game.exe
+C:\Users\klimm\Desktop\Game\bin\Debug\Game.pdb
+C:\Users\klimm\Desktop\Новая папка\Game\bin\Debug\Game.exe.config
+C:\Users\klimm\Desktop\Новая папка\Game\bin\Debug\Game.exe
+C:\Users\klimm\Desktop\Новая папка\Game\bin\Debug\Game.pdb
+C:\Users\klimm\Desktop\Новая папка\Game\obj\Debug\Game.csprojAssemblyReference.cache
+C:\Users\klimm\Desktop\Новая папка\Game\obj\Debug\Game.Properties.Resources.resources
+C:\Users\klimm\Desktop\Новая папка\Game\obj\Debug\Game.GameResources.resources
+C:\Users\klimm\Desktop\Новая папка\Game\obj\Debug\Game.csproj.GenerateResource.cache
+C:\Users\klimm\Desktop\Новая папка\Game\obj\Debug\Game.csproj.CoreCompileInputs.cache
+C:\Users\klimm\Desktop\Новая папка\Game\obj\Debug\Game.exe
+C:\Users\klimm\Desktop\Новая папка\Game\obj\Debug\Game.pdb
+C:\Users\klimm\Desktop\Game\bin\Debug\nunit.framework.dll
+C:\Users\klimm\Desktop\Game\bin\Debug\nunit.framework.pdb
+C:\Users\klimm\Desktop\Game\bin\Debug\nunit.framework.xml
+C:\Users\klimm\Desktop\Game\obj\Debug\Game.csproj.CopyComplete
