@@ -29,9 +29,10 @@ namespace DWarp.Core.Drawing
         public static void Open(Door door, int interval) // ToUpgrade...
         {
             var sprite = door.Sprite;
+            sprite.SizeOffset = (0, 0);
+
             var timer = new Timer();
             timer.Interval = interval;
-
             timer.Elapsed += (sender, args) =>
             {
                 if (-sprite.SizeOffset.Height >= Game.SpritesSize)
@@ -47,9 +48,10 @@ namespace DWarp.Core.Drawing
         public static void Close(Door door, int interval) // ToUpgrade..
         {
             var sprite = door.Sprite;
+            sprite.SizeOffset = (0, -Game.SpritesSize);
+
             var timer = new Timer();
             timer.Interval = interval;
-
             timer.Elapsed += (sender, args) =>
             {
                 if (sprite.SizeOffset.Height >= 0)
@@ -60,6 +62,11 @@ namespace DWarp.Core.Drawing
                 sprite.SizeOffset.Height++;
             };
             timer.Start();
+        }
+
+        public static void Warp(int interval)
+        {
+
         }
     }
 }

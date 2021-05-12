@@ -35,7 +35,7 @@ namespace DWarp.Core.Controls.Factorys
                 case CreatureType.CubeSpawn:
                     return new Creature(type, Properties.Resources.Floor);
                 case CreatureType.Exit:
-                    return new Creature(type, Properties.Resources.Door);
+                    return new Creature(type, Properties.Resources.Exit);
                 default:
                     throw new ArgumentException($"{type} is not registred Creature type");
             }

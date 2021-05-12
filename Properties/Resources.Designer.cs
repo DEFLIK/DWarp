@@ -103,6 +103,16 @@ namespace DWarp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Exit {
+            get {
+                object obj = ResourceManager.GetObject("Exit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Floor {
             get {
                 object obj = ResourceManager.GetObject("Floor", resourceCulture);
@@ -136,6 +146,16 @@ namespace DWarp.Properties {
         internal static System.Drawing.Bitmap Spawn {
             get {
                 object obj = ResourceManager.GetObject("Spawn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Vignette {
+            get {
+                object obj = ResourceManager.GetObject("Vignette", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

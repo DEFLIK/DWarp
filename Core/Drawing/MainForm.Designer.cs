@@ -1,4 +1,4 @@
-﻿namespace DWarp
+﻿namespace DWarp.Core.Drawing
 {
     partial class MainForm
     {

@@ -59,7 +59,9 @@ namespace DWarp.Core
         public static void DoWarp()
         {
             if (!IsWarped)
+            {
                 IsWarped = true;
+            }
             else
             {
                 if (WarpedPlayer.PickedCube != null)

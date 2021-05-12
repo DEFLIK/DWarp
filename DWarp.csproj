@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Controls\CubeActions.cs" />
+    <Compile Include="Core\Controls\FpsCounter.cs" />
     <Compile Include="Core\Controls\PlayerCommands.cs" />
     <Compile Include="Core\Drawing\Animations.cs" />
     <Compile Include="Core\Controls\WarpedPlayerCommands.cs" />
@@ -110,10 +111,12 @@
     <Content Include="Resources\Audio\WarpAmbient.wav" />
     <Content Include="Resources\Audio\WarpIn.wav" />
     <Content Include="Resources\Audio\WarpOut.wav" />
+    <Content Include="Resources\GUI\Vignette.png" />
     <Content Include="Resources\Sprites\ButtonF.png" />
     <Content Include="Resources\Sprites\ButtonT.png" />
     <Content Include="Resources\Sprites\Cube.png" />
     <Content Include="Resources\Sprites\Door.png" />
+    <Content Include="Resources\Sprites\Exit.png" />
     <Content Include="Resources\Sprites\Floor.png" />
     <Content Include="Resources\Sprites\Player.png" />
     <Content Include="Resources\Sprites\Spawn.png" />

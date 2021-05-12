@@ -21,9 +21,9 @@ namespace DWarp.Core.Controls
                 Game.CommandsStack.AddCommand(new Move(Game.WarpedPlayer, deltaX, deltaY));
                 Game.Player.Location.X = resPosX;
                 Game.Player.Location.Y = resPosY;
+                if (Game.Map[resPosX, resPosY].Type == CreatureType.Exit)
+                    Game.Load(Game.CurrentLevel);
             }
-            if (Game.Map[resPosX, resPosY].Type == CreatureType.Exit)
-                Game.Load(Game.CurrentLevel);
         }
 
         public static void TakeCube()
