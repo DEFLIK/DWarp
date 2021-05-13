@@ -85,7 +85,6 @@ namespace DWarp.Core.Controls.Factorys
                         $"\nButton at [{wire.Button.X},{wire.Button.Y}]: {button is Button}" +
                         $"\nDoor at [{wire.Door.X},{wire.Door.Y}]: {door is Door}");
                 button.LinkedDoor = door;
-                //button.Update();
             }
         }
     }

@@ -4,7 +4,7 @@ using DWarp.Core.Models;
 
 namespace DWarp.Core.Drawing
 {
-    public static class CreaturesSprites
+    public static class CreaturesSprites //ToFix "MakeTransparent" threading exception
     {
         public static List<Creature> Dynamic = new List<Creature>();
         public static List<Creature> Static = new List<Creature>();

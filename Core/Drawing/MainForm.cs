@@ -61,7 +61,12 @@ namespace DWarp.Core.Drawing
                     -Game.Map.GetLength(1) * Game.SpritesSize / 2 + Game.SpritesSize / 2);
                 if (drawWires)
                     foreach (var wire in Game.CurrentLevel.Wires)
-                        g.DrawLine(new Pen(new SolidBrush(Color.FromArgb(wire.Button.X * 255 / Game.Map.GetLength(0), wire.Door.X * 255 / Game.Map.GetLength(0), wire.Button.Y * 255 / Game.Map.GetLength(1)))) { Width = Game.SpritesSize / 10 }, 
+                        g.DrawLine(
+                            new Pen(new SolidBrush(
+                                Color.FromArgb(wire.Button.X * 255 / Game.Map.GetLength(0), 
+                                wire.Door.X * 255 / Game.Map.GetLength(0),
+                                wire.Button.Y * 255 / Game.Map.GetLength(1)))) 
+                                { Width = Game.SpritesSize / 10 }, 
                             wire.Button.X * Game.SpritesSize, 
                             wire.Button.Y * Game.SpritesSize, 
                             wire.Door.X * Game.SpritesSize, 
@@ -74,29 +79,18 @@ namespace DWarp.Core.Drawing
 
             KeyDown += (sender, args) => { if (Game.Map != null) InputControl.ApplyKey(args.KeyCode); };
 
-            Load += (sender, args) =>
-            {
-                OnSizeChanged(args);
-            };
+            Load += (sender, args) => OnSizeChanged(args);
 
             SizeChanged += (sender, args) =>
             {
                 levelsTable.Location = new Point(0, ClientSize.Height - levelsTable.Height);
                 controlTable.Location = new Point(ClientSize.Width - controlTable.Width, 0);
-                //foreach (var creature in Game.Map)
-                //    UpdateCreatureSprite(creature);
-                //foreach(var cube in Game.Cubes)
-                //    if(cube != null)
-                //        UpdateCreatureSprite(cube);
                 UpdateGUISprite(vignette);
                 //DrawStaticCreatures(CreateGraphics());
                 //DrawDynamicCreatures(CreateGraphics());
             };
 
-            MouseWheel += (sender, args) =>
-            {
-                InputControl.ApllyMouseScroll(args.Delta); 
-            };
+            MouseWheel += (sender, args) => { if (Game.Map != null) InputControl.ApllyMouseScroll(args.Delta); }; 
 
             var invalidatingTimer = new Timer();
             invalidatingTimer.Interval = 1;

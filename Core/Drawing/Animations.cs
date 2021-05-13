@@ -66,7 +66,7 @@ namespace DWarp.Core.Drawing
 
         public static void Warp(int interval) // ToDo..
         {
-
+            
         }
     }
 }
