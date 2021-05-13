@@ -25,7 +25,7 @@ namespace DWarp.Core.Controls.Factorys
                 case CreatureType.Void:
                     return new Creature(type, Properties.Resources.Floor);
                 case CreatureType.Wall:
-                    return new Creature(type, Properties.Resources.HorizontalWall);
+                    return new Creature(type, null);
                 case CreatureType.Button:
                     return new Button(Properties.Resources.ButtonF);
                 case CreatureType.PlayerSpawn:

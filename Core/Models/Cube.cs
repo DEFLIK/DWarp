@@ -5,6 +5,6 @@ namespace DWarp.Core.Models
 {
     public class Cube : Creature // ToUpgrade...
     {
-        public Cube(Bitmap image) : base(CreatureType.CubeSpawn, image) { }
+        public Cube(Bitmap image) : base(CreatureType.CubeSpawn, image, true) { }
     }
 }

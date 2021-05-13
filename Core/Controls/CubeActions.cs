@@ -19,6 +19,7 @@ namespace DWarp.Core.Controls
                 Game.Cubes[player.Location.X, player.Location.Y] = null;
                 if (Game.Map[player.Location.X, player.Location.Y] is Button)
                     (Game.Map[player.Location.X, player.Location.Y] as Button).Update();
+                cube.Sprite.Visible = false;
                 return true;
             }
             return false;
@@ -37,7 +38,8 @@ namespace DWarp.Core.Controls
             {
                 Game.Cubes[player.Location.X, player.Location.Y] = player.PickedCube;
                 (player.PickedCube.Location.X, player.PickedCube.Location.Y) = (player.Location.X, player.Location.Y);
-                Animations.Fall(player.PickedCube, 10);
+                Animations.Fall(player.PickedCube, 1);
+                player.PickedCube.Sprite.Visible = true;
                 player.PickedCube = null;
                 if (Game.Map[player.Location.X, player.Location.Y] is Button)
                     (Game.Map[player.Location.X, player.Location.Y] as Button).Update();

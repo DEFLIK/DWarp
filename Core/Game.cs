@@ -1,6 +1,7 @@
 ﻿using System.Timers;
 using DWarp.Core.Controls;
 using DWarp.Core.Controls.Factorys;
+using DWarp.Core.Drawing;
 using DWarp.Core.Models;
 using DWarp.Resources.Levels;
 
@@ -14,15 +15,18 @@ namespace DWarp.Core
         public static Cube[,] Cubes;
         public static int SpritesSize;
         public static bool IsWarped = false;
-        public static Player Player = new Player(Properties.Resources.Player);
-        public static Player WarpedPlayer = new Player(Properties.Resources.Player);
+        public static Player Player;
+        public static Player WarpedPlayer;
         public static CommandsStack<ICommand> CommandsStack;
         public static int Time;
 
         private static Timer timer;
 
-        public static void Load(Level level)
+        public static void Load(Level level) //ToRefactor...
         {
+            Map = null;
+            Player = new Player(Properties.Resources.Player);
+            WarpedPlayer = new Player(Properties.Resources.Player);
             CurrentLevel = level;
             Time = level.TimeLimit;
             Map = MapCreator.CreateMap(level.Map);
@@ -30,6 +34,7 @@ namespace DWarp.Core
             MapCreator.SpawnDynamicCreatures(Map);
             if (level.Wires != null)
                 MapCreator.WireButtonsWithDoors(Map, level.Wires);
+            WallBuilder.SetWallsSprite();
             SpritesSize = 460 / Map.GetLength(0);
             CommandsStack = new CommandsStack<ICommand>(level.StepsLimit);
             WarpedPlayer.PickedCube = null;
@@ -52,6 +57,7 @@ namespace DWarp.Core
                     }
                 };
             }
+            CreaturesSprites.Load();
         }
 
         public static void StartTimer() => timer.Start();

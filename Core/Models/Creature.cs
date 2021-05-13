@@ -9,11 +9,13 @@ namespace DWarp.Core.Models
         public Sprite Sprite;
         public Point Location = new Point();
         public readonly CreatureType Type;
+        public readonly bool IsDynamic;
 
-        public Creature(CreatureType type, Bitmap image)
+        public Creature(CreatureType type, Bitmap image, bool isDynamic = false)
         {
             Type = type;
             Sprite = new Sprite(new Rectangle(), image, this);
+            IsDynamic = isDynamic;
         }
     }
 }

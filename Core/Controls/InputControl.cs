@@ -51,12 +51,6 @@ namespace DWarp.Core.Controls
                     if (Game.IsWarped)
                         Game.WarpPlayer();
                     break;
-                //case Keys.Up:
-                //    Game.SpritesSize += 5;
-                //    break;
-                //case Keys.Down:
-                //    Game.SpritesSize -= 5;
-                //    break;
                 case Keys.R:
                     Game.Load(Game.CurrentLevel);
                     break;

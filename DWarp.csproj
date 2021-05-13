@@ -61,6 +61,8 @@
     <Compile Include="Core\Drawing\Animations.cs" />
     <Compile Include="Core\Controls\WarpedPlayerCommands.cs" />
     <Compile Include="Core\Controls\InputControl.cs" />
+    <Compile Include="Core\Drawing\CreaturesSprites.cs" />
+    <Compile Include="Core\Drawing\WallBuilder.cs" />
     <Compile Include="Core\Models\Button.cs" />
     <Compile Include="Core\Models\Creature.cs" />
     <Compile Include="Core\Controls\Factorys\CreatureFactory.cs" />
@@ -120,7 +122,22 @@
     <Content Include="Resources\Sprites\Floor.png" />
     <Content Include="Resources\Sprites\Player.png" />
     <Content Include="Resources\Sprites\Spawn.png" />
-    <Content Include="Resources\Sprites\HorizontalWall.png" />
+    <Content Include="Resources\Sprites\Walls\Wall0000.png" />
+    <Content Include="Resources\Sprites\Walls\Wall0001.png" />
+    <Content Include="Resources\Sprites\Walls\Wall0010.png" />
+    <Content Include="Resources\Sprites\Walls\Wall0011.png" />
+    <Content Include="Resources\Sprites\Walls\Wall0100.png" />
+    <Content Include="Resources\Sprites\Walls\Wall0101.png" />
+    <Content Include="Resources\Sprites\Walls\Wall0110.png" />
+    <Content Include="Resources\Sprites\Walls\Wall0111.png" />
+    <Content Include="Resources\Sprites\Walls\Wall1000.png" />
+    <Content Include="Resources\Sprites\Walls\Wall1001.png" />
+    <Content Include="Resources\Sprites\Walls\Wall1010.png" />
+    <Content Include="Resources\Sprites\Walls\Wall1011.png" />
+    <Content Include="Resources\Sprites\Walls\Wall1100.png" />
+    <Content Include="Resources\Sprites\Walls\Wall1101.png" />
+    <Content Include="Resources\Sprites\Walls\Wall1110.png" />
+    <Content Include="Resources\Sprites\Walls\Wall1111.png" />
     <Content Include="ToDo.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

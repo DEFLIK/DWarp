@@ -10,7 +10,7 @@ namespace DWarp.Core.Models
         private static Bitmap unpressedImage = Properties.Resources.ButtonF;
         public Door LinkedDoor;
         public bool Pressed { get; private set; }
-        public Button(Bitmap image) : base(CreatureType.Button, image) { }
+        public Button(Bitmap image) : base(CreatureType.Button, image, true) { }
 
         public void Update()
         {
@@ -18,9 +18,9 @@ namespace DWarp.Core.Models
             Sprite.Image = Pressed ? pressedImage : unpressedImage;
             LinkedDoor.Opened = Pressed;
             if (Pressed)
-                Animations.Open(LinkedDoor, 10);
+                Animations.Open(LinkedDoor, 1);
             else
-                Animations.Close(LinkedDoor, 10);
+                Animations.Close(LinkedDoor, 1);
         }
     }
 }
