@@ -114,6 +114,7 @@
     <Content Include="Resources\Audio\WarpIn.wav" />
     <Content Include="Resources\Audio\WarpOut.wav" />
     <Content Include="Resources\GUI\Vignette.png" />
+    <None Include="Resources\LowResSprites%28unused%29\Cube.png" />
     <Content Include="Resources\Sprites\ButtonF.png" />
     <Content Include="Resources\Sprites\ButtonT.png" />
     <Content Include="Resources\Sprites\Cube.png" />
