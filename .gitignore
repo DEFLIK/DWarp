@@ -1,9 +1,6 @@
 *.cache
 *.exe
 *.pdb
-*.csproj
-*.unityproj
-*.sln
 *.suo
 *.tmp
 *.user
