@@ -9,6 +9,7 @@ namespace DWarp.Core.Controls.Factorys
         WarpedPlayer,
         Wall,
         PlayerSpawn,
+        DummySpawn,
         Void,
         Button,
         Door,
@@ -29,6 +30,8 @@ namespace DWarp.Core.Controls.Factorys
                 case CreatureType.Button:
                     return new Button(Properties.Resources.ButtonF);
                 case CreatureType.PlayerSpawn:
+                    return new Creature(type, Properties.Resources.Spawn);
+                case CreatureType.DummySpawn:
                     return new Creature(type, Properties.Resources.Spawn);
                 case CreatureType.Door:
                     return new Door(Properties.Resources.Door);

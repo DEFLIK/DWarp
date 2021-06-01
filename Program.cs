@@ -13,10 +13,6 @@ namespace DWarp
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
-        {
-            Game.Load(Presets.Levels.First().Value);
-            Application.Run(new MainForm());
-        }
+        static void Main() => Application.Run(Game.Initialize(Presets.Levels.First().Value));
     }
 }

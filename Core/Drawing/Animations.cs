@@ -5,13 +5,13 @@ namespace DWarp.Core.Drawing
 {
     static class Animations
     {
-        public static void Fall(Creature creature, int interval)
+        public static void Fall(State state, Creature creature, int interval)
         {
             var sprite = creature.Sprite;
             var timer = new Timer();
             timer.Interval = interval;
 
-            var startYOffset = -Game.SpritesSize / 2;
+            var startYOffset = -state.SpritesSize / 2;
             sprite.Offset = (0, startYOffset);
 
             timer.Elapsed += (sender, args) =>

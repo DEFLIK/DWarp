@@ -5,7 +5,7 @@ using DWarp.Core.Models;
 
 namespace DWarp.Core.Controls.Factorys
 {
-    class MapCreator
+    public static class MapCreator
     {
 
         public static Creature[,] CreateMap(string map, string separator = "\r\n")
@@ -27,6 +27,9 @@ namespace DWarp.Core.Controls.Factorys
             {
                 case 'P':
                     type = CreatureType.PlayerSpawn;
+                    break;
+                case 'K':
+                    type = CreatureType.DummySpawn;
                     break;
                 case 'B':
                     type = CreatureType.Button;
@@ -55,27 +58,34 @@ namespace DWarp.Core.Controls.Factorys
             return resultCreature;
         }
 
-        public static void SpawnDynamicCreatures(Creature[,] map)
+        public static void SpawnDynamicCreatures(State state)
         {
+            var map = state.Map;
             foreach (var creature in map)
             {
                 var pos = creature.Location;
                 switch (creature.Type)
                 {
                     case CreatureType.PlayerSpawn:
-                        Game.Player.Location = new Point(pos.X, pos.Y);
-                        Game.WarpedPlayer.Location = new Point(pos.X, pos.Y);
+                        state.Player.Location = new Point(pos.X, pos.Y);
+                        state.WarpedPlayer.Location = new Point(pos.X, pos.Y);
                         break;
                     case CreatureType.CubeSpawn:
-                        Game.Cubes[pos.X, pos.Y] = new Cube(Properties.Resources.Cube);
-                        Game.Cubes[pos.X, pos.Y].Location = new Point(pos.X, pos.Y);
+                        state.Cubes[pos.X, pos.Y] = new Cube(Properties.Resources.Cube, new Point(pos.X, pos.Y));
+                        state.Cubes[pos.X, pos.Y].Location = new Point(pos.X, pos.Y);
+                        break;
+                    case CreatureType.DummySpawn:
+                        state.Dummy = new Dummy(Properties.Resources.Dummy, new Point(pos.X, pos.Y));
+                        state.Dummy.Location = new Point(pos.X, pos.Y);
                         break;
                 }
             }
         }
 
-        public static void WireButtonsWithDoors(Creature[,] map, Wire[] wires)
+        public static void WireButtonsWithDoors(State state)
         {
+            var map = state.Map;
+            var wires = state.CurrentLevel.Wires;
             foreach (var wire in wires)
             {
                 var button = map[wire.Button.X, wire.Button.Y] as Button;

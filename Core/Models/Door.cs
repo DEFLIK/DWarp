@@ -6,6 +6,6 @@ namespace DWarp.Core.Models
     public class Door : Creature
     {
         public bool Opened;
-        public Door(Bitmap image) : base(CreatureType.Door, image, true) { }
+        public Door(Bitmap image) : base(CreatureType.Door, image, 3, true) { }
     }
 }

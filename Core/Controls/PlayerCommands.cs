@@ -5,46 +5,46 @@ namespace DWarp.Core.Controls
 {
     public static class PlayerCommands
     {
-        public static void Move(int deltaX, int deltaY)
+        public static void Move(State state, int deltaX, int deltaY)
         {
-            if (Game.CommandsStack.Stack.Count == 0 && Game.CurrentLevel.TimeLimit > 0)
-                Game.StartTimer();
-            if (Game.CommandsStack.Stack.Count >= Game.CommandsStack.Limit)
+            if (state.CommandsStack.Stack.Count == 0 && state.CurrentLevel.TimeLimit > 0)
+                state.StartTimer();
+            if (state.CommandsStack.Stack.Count >= state.CommandsStack.Limit)
                 return;
-            var resPosX = Game.Player.Location.X + deltaX;
-            var resPosY = Game.Player.Location.Y + deltaY;
-            var mapSize = Game.Map.GetLength(0);
-            if (resPosX < mapSize && resPosY < mapSize && resPosX >= 0 && resPosY >= 0 && Game.Map[resPosX, resPosY].Type != CreatureType.Wall)
+            var resPosX = state.Player.Location.X + deltaX;
+            var resPosY = state.Player.Location.Y + deltaY;
+            var mapSize = state.Map.GetLength(0);
+            if (resPosX < mapSize && resPosY < mapSize && resPosX >= 0 && resPosY >= 0 && state.Map[resPosX, resPosY].Type != CreatureType.Wall)
             {
-                if (Game.Map[resPosX, resPosY].Type == CreatureType.Door && !(Game.Map[resPosX, resPosY] as Door).Opened)
+                if (state.Map[resPosX, resPosY].Type == CreatureType.Door && !(state.Map[resPosX, resPosY] as Door).Opened)
                     return;
-                Game.CommandsStack.AddCommand(new Move(Game.WarpedPlayer, deltaX, deltaY));
-                Game.Player.Location.X = resPosX;
-                Game.Player.Location.Y = resPosY;
-                if (Game.Map[resPosX, resPosY].Type == CreatureType.Exit)
-                    Game.Load(Game.CurrentLevel);
+                state.CommandsStack.AddCommand(new Move(state, state.WarpedPlayer, deltaX, deltaY));
+                state.Player.Location.X = resPosX;
+                state.Player.Location.Y = resPosY;
+                if (state.Map[resPosX, resPosY].Type == CreatureType.Exit)
+                    Game.ChangeLevel(state.CurrentLevel);
             }
         }
 
-        public static void TakeCube()
+        public static void TakeCube(State state)
         {
-            var commandCompleted = CubeActions.Take(Game.Player);
+            var commandCompleted = CubeActions.Take(state, state.Player);
 
-            if (commandCompleted && !Game.IsWarped)
+            if (commandCompleted && !state.IsWarped)
             {
-                var warpedPlayeCommand = new TakeCube(Game.WarpedPlayer);
-                Game.CommandsStack.AddCommand(warpedPlayeCommand);
+                var warpedPlayeCommand = new TakeCube(state, state.WarpedPlayer);
+                state.CommandsStack.AddCommand(warpedPlayeCommand);
             }
         }
 
-        public static void PlaceCube()
+        public static void PlaceCube(State state)
         {
-            var commandCompleted = CubeActions.Place(Game.Player);
+            var commandCompleted = CubeActions.Place(state, state.Player);
 
-            if (commandCompleted && !Game.IsWarped)
+            if (commandCompleted && !state.IsWarped)
             {
-                var warpedPlayeCommand = new PlaceCube(Game.WarpedPlayer);
-                Game.CommandsStack.AddCommand(warpedPlayeCommand);
+                var warpedPlayeCommand = new PlaceCube(state, state.WarpedPlayer);
+                state.CommandsStack.AddCommand(warpedPlayeCommand);
             }
         }
     }

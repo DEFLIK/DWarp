@@ -13,7 +13,7 @@ namespace DWarp.Resources.Levels
             Levels.Add("defaultLevel", new Level
             (
 @"
-...+..+.
+K..+..+.
 ..B+..+.
 ...+++++
 ...D..DE
@@ -21,7 +21,7 @@ namespace DWarp.Resources.Levels
 ..B+..+.
 .PC+..+.
 ...+..+.
-", 15, 20,
+", 15, 30,
                 new Wire[]
                 {
                     new Wire(new Point(2, 1), new Point(3, 3)),

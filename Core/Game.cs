@@ -1,6 +1,5 @@
-﻿using System.Timers;
-using DWarp.Core.Controls;
-using DWarp.Core.Controls.Factorys;
+﻿using System;
+using System.Timers;
 using DWarp.Core.Drawing;
 using DWarp.Core.Models;
 using DWarp.Resources.Levels;
@@ -9,85 +8,26 @@ namespace DWarp.Core
 {
     public static class Game
     {
-        public static Level CurrentLevel;
-
-        public static Creature[,] Map;
-        public static Cube[,] Cubes;
-        public static int SpritesSize;
-        public static bool IsWarped = false;
-        public static Player Player;
-        public static Player WarpedPlayer;
-        public static CommandsStack<ICommand> CommandsStack;
-        public static int Time;
-
-        private static Timer timer;
-
-        public static void Load(Level level) //ToRefactor...
+        //public static State currentState { get; private set; }
+        public static MainForm mainForm;
+        /// <summary>
+        /// Подготавливает игру и основную форму
+        /// </summary>
+        /// <param name="level"></param>
+        /// <returns>Форма, в которой отображается игра</returns>
+        public static MainForm Initialize(Level level)
         {
-            Map = null;
-            Player = new Player(Properties.Resources.Player);
-            WarpedPlayer = new Player(Properties.Resources.Player);
-            CurrentLevel = level;
-            Time = level.TimeLimit;
-            Map = MapCreator.CreateMap(level.Map);
-            Cubes = new Cube[Map.GetLength(0), Map.GetLength(1)];
-            MapCreator.SpawnDynamicCreatures(Map);
-            if (level.Wires != null)
-                MapCreator.WireButtonsWithDoors(Map, level.Wires);
-            WallBuilder.SetWallsSprite();
-            SpritesSize = 460 / Map.GetLength(0);
-            CommandsStack = new CommandsStack<ICommand>(level.StepsLimit);
-            WarpedPlayer.PickedCube = null;
-            Player.PickedCube = null;
-            if (IsWarped)
-                DoWarp();
-            if (level.TimeLimit > 0)
-            {
-                if (timer != null)
-                    timer.Dispose();
-                timer = new Timer();
-                timer.Interval = 1000;
-                timer.Elapsed += (sender, args) =>
-                {
-                    Time--;
-                    if (Time <= 0)
-                    {
-                        timer.Dispose();
-                        Load(CurrentLevel);
-                    }
-                };
-            }
-            CreaturesSprites.Load();
+            mainForm = new MainForm(new State(level));
+            return mainForm;
         }
 
-        public static void StartTimer() => timer.Start();
-
-        public static void DoWarp()
+        public static void ChangeLevel(Level level)
         {
-            if (!IsWarped)
-                IsWarped = true;
-            else
-            {
-                if (WarpedPlayer.PickedCube != null)
-                    CubeActions.Place(WarpedPlayer);
-                CommandsStack.ResetBack();
-                IsWarped = false;
-            }
-            WarpedPlayer.Location.X = Player.Location.X;
-            WarpedPlayer.Location.Y = Player.Location.Y;
-        }
-
-        public static void WarpPlayer()
-        {
-            if (IsWarped)
-            {
-                if (WarpedPlayer.PickedCube != null)
-                    CubeActions.Place(WarpedPlayer);
-                CommandsStack.Canceled.Clear();
-                Player.Location.X = WarpedPlayer.Location.X;
-                Player.Location.Y = WarpedPlayer.Location.Y;
-                IsWarped = false;
-            }
+            if (mainForm.CurrentState != null)
+                mainForm.CurrentState.Dispose();
+            var newState = new State(level);
+            mainForm.ChangeState(newState);
+            GC.Collect();
         }
     }
 }

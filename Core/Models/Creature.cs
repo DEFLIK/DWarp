@@ -11,10 +11,10 @@ namespace DWarp.Core.Models
         public readonly CreatureType Type;
         public readonly bool IsDynamic;
 
-        public Creature(CreatureType type, Bitmap image, bool isDynamic = false)
+        public Creature(CreatureType type, Bitmap image, int drawingLayer = 0, bool isDynamic = false)
         {
             Type = type;
-            Sprite = new Sprite(new Rectangle(), image, this);
+            Sprite = new Sprite(new Rectangle(), image, this, drawingLayer);
             IsDynamic = isDynamic;
         }
     }

@@ -57,11 +57,13 @@
   <ItemGroup>
     <Compile Include="Core\Controls\CubeActions.cs" />
     <Compile Include="Core\Controls\FpsCounter.cs" />
+    <Compile Include="Core\Controls\PathFinder.cs" />
     <Compile Include="Core\Controls\PlayerCommands.cs" />
     <Compile Include="Core\Drawing\Animations.cs" />
     <Compile Include="Core\Controls\WarpedPlayerCommands.cs" />
     <Compile Include="Core\Controls\InputControl.cs" />
     <Compile Include="Core\Drawing\CreaturesSprites.cs" />
+    <Compile Include="Core\Drawing\Menu.cs" />
     <Compile Include="Core\Drawing\WallBuilder.cs" />
     <Compile Include="Core\Models\Button.cs" />
     <Compile Include="Core\Models\Creature.cs" />
@@ -76,7 +78,10 @@
     </Compile>
     <Compile Include="Core\Models\Cube.cs" />
     <Compile Include="Core\Models\Door.cs" />
+    <Compile Include="Core\Models\Dummy.cs" />
+    <Compile Include="Core\Models\PathWithCost.cs" />
     <Compile Include="Core\Models\Player.cs" />
+    <Compile Include="Core\Models\State.cs" />
     <Compile Include="Core\Models\Wire.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Core\Drawing\Sprite.cs" />
@@ -119,6 +124,7 @@
     <Content Include="Resources\Sprites\ButtonT.png" />
     <Content Include="Resources\Sprites\Cube.png" />
     <Content Include="Resources\Sprites\Door.png" />
+    <Content Include="Resources\Sprites\Dummy.png" />
     <Content Include="Resources\Sprites\Exit.png" />
     <Content Include="Resources\Sprites\Floor.png" />
     <Content Include="Resources\Sprites\Player.png" />

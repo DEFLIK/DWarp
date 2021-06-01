@@ -1,58 +1,62 @@
 ﻿using System.Windows.Forms;
 using DWarp.Core.Drawing;
+using DWarp.Core.Models;
 
 namespace DWarp.Core.Controls
 {
     static class InputControl
     {
-        public static void ApllyMouseScroll(int deltaScroll) => Game.SpritesSize += deltaScroll > 0 ? 1 : -1;
+        public static void ApllyMouseScroll(State state, int deltaScroll) => state.SpritesSize += deltaScroll > 0 ? 1 : -1; 
 
-        public static void ApplyKey(Keys key) //ToRefactor...
+        public static void ApplyKey(State state, Keys key) //ToRefactor...
         {
             switch (key)
             {
                 case Keys.Space:
-                    if (Game.Player.PickedCube == null)
-                        PlayerCommands.TakeCube();
+                    if (state.Player.PickedCube == null)
+                        PlayerCommands.TakeCube(state);
                     else
-                        PlayerCommands.PlaceCube();
+                        PlayerCommands.PlaceCube(state);
                     break;
                 case Keys.B:
-                    Animations.Fall(Game.Player, 10);
+                    Animations.Fall(state, state.Player, 10);
                     break;
                 case Keys.F:
-                    Game.DoWarp();
+                    state.DoWarp();
                     break;
                 case Keys.W:
-                    if (!Game.IsWarped)
-                        PlayerCommands.Move(0, -1);
+                    if (!state.IsWarped)
+                        PlayerCommands.Move(state, 0, -1);
                     break;
                 case Keys.A:
-                    if (!Game.IsWarped)
-                        PlayerCommands.Move(-1, 0);
+                    if (!state.IsWarped)
+                        PlayerCommands.Move(state, -1, 0);
                     break;
                 case Keys.S:
-                    if (!Game.IsWarped)
-                        PlayerCommands.Move(0, 1);
+                    if (!state.IsWarped)
+                        PlayerCommands.Move(state, 0, 1);
                     break;
                 case Keys.D:
-                    if (!Game.IsWarped)
-                        PlayerCommands.Move(1, 0);
+                    if (!state.IsWarped)
+                        PlayerCommands.Move(state, 1, 0);
                     break;
                 case Keys.Q:
-                    if (Game.IsWarped)
-                        Game.CommandsStack.RollBack();
+                    if (state.IsWarped)
+                        state.CommandsStack.RollBack();
                     break;
                 case Keys.E:
-                    if (Game.IsWarped)
-                        Game.CommandsStack.RollForward();
+                    if (state.IsWarped)
+                        state.CommandsStack.RollForward();
                     break;
                 case Keys.V:
-                    if (Game.IsWarped)
-                        Game.WarpPlayer();
+                    if (state.IsWarped)
+                        state.WarpPlayer();
                     break;
                 case Keys.R:
-                    Game.Load(Game.CurrentLevel);
+                    Game.ChangeLevel(state.CurrentLevel);
+                    break;
+                case Keys.Escape:
+                    Game.mainForm.MenuPanel.SwitchVisibility();
                     break;
             }
         }
