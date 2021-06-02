@@ -3,7 +3,6 @@
 *.pdb
 *.suo
 *.tmp
-*.user
 *.userprefs
 *.pidb
 *.booproj
