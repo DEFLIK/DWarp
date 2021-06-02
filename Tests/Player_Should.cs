@@ -1,13 +1,12 @@
-﻿using System.Timers;
-using System.Drawing;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DWarp.Core.Controls;
 using DWarp.Core.Models;
 using DWarp.Resources.Levels;
-using NUnit.Framework;
+using System.Drawing;
 
 namespace DWarp_Tests
 {
-    [TestFixture]
+    [TestClass]
     public class Player_Should
     {
         private static readonly string moveTestMap = @"
@@ -23,7 +22,7 @@ PC.
 ";
         private static readonly Wire[] wiredTestMapWire = new Wire[] { new Wire(new Point(1, 1), new Point(2, 1)) };
 
-        [Test]
+        [TestMethod]
         public void DoBasicMoves()
         {
             var state = new State(new Level(moveTestMap, 100));
@@ -34,7 +33,7 @@ PC.
             Assert.AreEqual(new Point(2, 1), state.Player.Location);
         }
 
-        [Test]
+        [TestMethod]
         public void MoveOutOfUpBounds()
         {
             var state = new State(new Level(moveTestMap, 100));
@@ -44,7 +43,7 @@ PC.
             Assert.AreEqual(new Point(0, 0), state.Player.Location);
         }
 
-        [Test]
+        [TestMethod]
         public void MoveCube()
         {
             var state = new State(new Level(wiredTestMap, 100, 0, wiredTestMapWire));

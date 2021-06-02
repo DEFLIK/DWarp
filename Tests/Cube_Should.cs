@@ -1,13 +1,12 @@
-﻿using System.Timers;
-using System.Drawing;
+﻿using System.Drawing;
 using DWarp.Core.Controls;
 using DWarp.Core.Models;
 using DWarp.Resources.Levels;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DWarp_Tests
 {
-    [TestFixture]
+    [TestClass]
     public class Cube_Should
     {
         private static string wiredTestMap = @"
@@ -17,7 +16,7 @@ PC.
 ";
         private static Wire[] wiredTestMapWire = new Wire[] { new Wire(new Point(1, 1), new Point(2, 1)) };
 
-        [Test]
+        [TestMethod]
         public void Move()
         {
             var state = new State(new Level(wiredTestMap, 100, 0, wiredTestMapWire));

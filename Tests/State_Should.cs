@@ -2,11 +2,11 @@
 using DWarp.Core.Controls;
 using DWarp.Core.Models;
 using DWarp.Resources.Levels;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DWarp_Tests
 {
-    [TestFixture]
+    [TestClass]
     public class State_Should
     {
         private static readonly string moveTestMap = @"
@@ -15,7 +15,7 @@ P..
 ...
 ";
 
-        [Test]
+        [TestMethod]
         public void WarpBack()
         {
             var state = new State(new Level(moveTestMap, 100));
@@ -28,7 +28,7 @@ P..
             Assert.AreEqual(new Point(0, 1), state.Player.Location);
         }
 
-        [Test]
+        [TestMethod]
         public void WarpForward()
         {
             var state = new State(new Level(moveTestMap, 100));

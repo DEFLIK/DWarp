@@ -2,11 +2,13 @@
 using DWarp.Core.Controls;
 using DWarp.Core.Models;
 using DWarp.Resources.Levels;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DWarp_Tests
 {
-    class WiredObjects_Should
+
+    [TestClass]
+    public class WiredObjects_Should
     {
         private static readonly string wiredTestMap = @"
 PC.
@@ -15,7 +17,7 @@ PC.
 ";
         private static Wire[] wiredTestMapWire = new Wire[] { new Wire(new Point(1, 1), new Point(2, 1)) };
 
-        [Test]
+        [TestMethod]
         public void PressButton()
         {
             var state = new State(new Level(wiredTestMap, 100, 0, wiredTestMapWire));
@@ -28,7 +30,7 @@ PC.
             Assert.AreEqual(((Button)state.Map[1, 1]).Pressed, false);
         }
 
-        [Test]
+        [TestMethod]
         public void ManipulateDoorByButtonWithButton()
         {
             var state = new State(new Level(wiredTestMap, 100, 0, wiredTestMapWire));
