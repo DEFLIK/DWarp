@@ -56,7 +56,6 @@
     <Compile Include="Cube_Should.cs" />
     <Compile Include="Player_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Dummy_Should.cs" />
     <Compile Include="State_Should.cs" />
     <Compile Include="WiredObjects_Should.cs" />
   </ItemGroup>

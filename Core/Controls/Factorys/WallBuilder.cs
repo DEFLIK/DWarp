@@ -26,7 +26,7 @@ namespace DWarp.Core.Drawing
                     foreach (var offset in offsets)
                     {
                         if (
-                            creature.Location.X + offset.X < state.Map.GetLength(0) // ToOtherMethod...
+                            creature.Location.X + offset.X < state.Map.GetLength(0)
                             && creature.Location.X + offset.X >= 0
                             && creature.Location.Y + offset.Y < state.Map.GetLength(1)
                             && creature.Location.Y + offset.Y >= 0)

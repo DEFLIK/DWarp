@@ -9,6 +9,7 @@ namespace DWarp.Core.Drawing
     {
         public readonly TableLayoutPanel MainTable;
         public readonly TableLayoutPanel LevelsTable;
+        public readonly PictureBox InstructionImage;
 
         public Menu(MainForm linkedForm)
         {
@@ -21,21 +22,21 @@ namespace DWarp.Core.Drawing
 
             LevelsTable = InitializeLevelSelector(linkedForm);
 
-            var tutorialImage = new PictureBox()
+            InstructionImage = new PictureBox()
             {
                 Visible = false,
                 Image = Properties.Resources.Instructions,
                 Size = linkedForm.ClientSize,
                 SizeMode = PictureBoxSizeMode.StretchImage
             };
-            tutorialImage.Click += (sender, args) => tutorialImage.Visible = false;
+            InstructionImage.Click += (sender, args) => InstructionImage.Visible = false;
 
             var logo = InitalizeMenuOption(Properties.Resources.Logo);
             var resumeButton = InitalizeMenuOption(Properties.Resources.Resume, (sender, args) => MainTable.Visible = false);
             var levelsButton = InitalizeMenuOption(Properties.Resources.Select, (sender, args) => SwitchLevelSelector());
             var tutorialButton = InitalizeMenuOption(Properties.Resources.Tutorial, (sender, args) => 
             {
-                tutorialImage.Visible = true;
+                InstructionImage.Visible = true;
                 LevelsTable.Visible = false;
                 MainTable.Visible = false;
             });
@@ -54,7 +55,7 @@ namespace DWarp.Core.Drawing
             linkedForm.Controls.Add(LevelsTable);
             linkedForm.SetDoubleBuffered(MainTable);
             linkedForm.Controls.Add(MainTable);
-            linkedForm.Controls.Add(tutorialImage);
+            linkedForm.Controls.Add(InstructionImage);
         }
 
         public void SwitchVisibility() => MainTable.Visible = !MainTable.Visible;

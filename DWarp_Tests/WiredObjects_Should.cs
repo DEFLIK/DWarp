@@ -8,17 +8,17 @@ namespace DWarp_Tests
 {
     class WiredObjects_Should
     {
-        private static string wireTestMap = @"
+        private static readonly string wiredTestMap = @"
 PC.
 .BD
 ...
 ";
-        private static Wire[] wireTestMapWire = new Wire[] { new Wire(new Point(1, 1), new Point(2, 1)) };
+        private static Wire[] wiredTestMapWire = new Wire[] { new Wire(new Point(1, 1), new Point(2, 1)) };
 
         [Test]
         public void PressButton()
         {
-            var state = new State(new Level(wireTestMap, 100, 0, wireTestMapWire));
+            var state = new State(new Level(wiredTestMap, 100, 0, wiredTestMapWire));
             PlayerCommands.Move(state, 1, 0);
             PlayerCommands.TakeCube(state);
             PlayerCommands.Move(state, 0, 1);
@@ -31,7 +31,7 @@ PC.
         [Test]
         public void ManipulateDoorByButtonWithButton()
         {
-            var state = new State(new Level(wireTestMap, 100, 0, wireTestMapWire));
+            var state = new State(new Level(wiredTestMap, 100, 0, wiredTestMapWire));
             PlayerCommands.Move(state, 1, 0);
             PlayerCommands.TakeCube(state);
             PlayerCommands.Move(state, 0, 1);

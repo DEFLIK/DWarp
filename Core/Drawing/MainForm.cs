@@ -33,15 +33,7 @@ namespace DWarp.Core.Drawing
             var vignette = new Sprite(new Rectangle(0, 0, ClientSize.Width, ClientSize.Height), Properties.Resources.Vignette, null);
             var drawWires = false;
 
-            //var controlsInfo = new Label // ToUpgrade...
-            //{
-            //    Location = new Point(0, 30),
-            //    Size = new Size(150, 100),
-            //    Text = "Move = WASD\nResize = MouseWheel\nUndo = Q\nRedo = E\nTake/Place Cube = Space\nReset = R\nWarpPlayer = F\nSelectWarpedPlayer = V"
-            //};
-            //Controls.Add(controlsInfo);
-
-            var controlTable = new TableLayoutPanel(); // ToUpgrade...
+            var controlTable = new TableLayoutPanel();
             var wireLabel = new Label() { Text = "Show Wires", Font = new Font("Arial", 12, FontStyle.Underline), BackColor = Color.Black, ForeColor = Color.White };
             controlTable.Size = new Size(106, 25);
             wireLabel.Click += (sender, args) => drawWires = drawWires ? false : true;
@@ -77,6 +69,7 @@ namespace DWarp.Core.Drawing
                 MenuPanel.MainTable.Location = new Point(ClientSize.Width / 2 - MenuPanel.MainTable.Width / 2, ClientSize.Height / 2 - MenuPanel.MainTable.Height / 2);
                 MenuPanel.LevelsTable.Size = new Size(ClientSize.Width, ClientSize.Height / 2);
                 MenuPanel.LevelsTable.Location = new Point(ClientSize.Width / 2 - MenuPanel.LevelsTable.Width / 2, ClientSize.Height / 2 - MenuPanel.LevelsTable.Height / 2);
+                MenuPanel.InstructionImage.Size = ClientSize;
                 UpdateGUISprite(vignette);
             };
 

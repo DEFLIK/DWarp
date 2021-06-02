@@ -9,7 +9,7 @@ namespace DWarp_Tests
     [TestFixture]
     public class State_Should
     {
-        private static string moveTestMap = @"
+        private static readonly string moveTestMap = @"
 P..
 ...
 ...

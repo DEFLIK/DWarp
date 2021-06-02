@@ -8,7 +8,6 @@ namespace DWarp.Core
 {
     public static class Game
     {
-        //public static State currentState { get; private set; }
         public static MainForm mainForm;
         /// <summary>
         /// Подготавливает игру и основную форму

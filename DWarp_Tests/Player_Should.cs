@@ -8,20 +8,20 @@ using NUnit.Framework;
 namespace DWarp_Tests
 {
     [TestFixture]
-    public class Player_Should //ToRefactor...
+    public class Player_Should
     {
-        private static string moveTestMap = @"
+        private static readonly string moveTestMap = @"
 P..
 ...
 ...
 ";
 
-        private static string wireTestMap = @"
+        private static readonly string wiredTestMap = @"
 PC.
 .BD
 ...
 ";
-        private static Wire[] wireTestMapWire = new Wire[] { new Wire(new Point(1, 1), new Point(2, 1)) };
+        private static readonly Wire[] wiredTestMapWire = new Wire[] { new Wire(new Point(1, 1), new Point(2, 1)) };
 
         [Test]
         public void DoBasicMoves()
@@ -47,7 +47,7 @@ PC.
         [Test]
         public void MoveCube()
         {
-            var state = new State(new Level(wireTestMap, 100, 0, wireTestMapWire));
+            var state = new State(new Level(wiredTestMap, 100, 0, wiredTestMapWire));
             var cube = state.Cubes[1, 0];
             PlayerCommands.Move(state, 1, 0);
             PlayerCommands.TakeCube(state);

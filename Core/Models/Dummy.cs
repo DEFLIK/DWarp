@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Timers;
 using DWarp.Core.Controls;
 using DWarp.Core.Controls.Factorys;
-using DWarp.Core.Drawing;
 
 namespace DWarp.Core.Models
 {
     public class Dummy : Player
     {
-        //private List<PathWithCost> pathsToCubes = new List<PathWithCost>();
-        //private PathWithCost currentPath;
         public readonly Point RespawnLocation;
         private Timer stepTimer = new Timer();
         private int stepCount = 0;
@@ -25,7 +19,7 @@ namespace DWarp.Core.Models
             RespawnLocation = respawnPoint;
         }
 
-        public PathWithCost GetPath(State state) // torefactor
+        public PathWithCost GetPath(State state)
         {
             var pathFinder = new PathFinder();
             var cubesLocations = new List<Point>();
@@ -41,7 +35,7 @@ namespace DWarp.Core.Models
             if (cubesLocations.Count == 0)
                 return pathFinder.GetPathsByDijkstra(state, Location, new List<Point>() { RespawnLocation }).FirstOrDefault();
             else
-                return pathFinder.GetPathsByDijkstra(state, Location, cubesLocations).FirstOrDefault(); // first to difficlt selector
+                return pathFinder.GetPathsByDijkstra(state, Location, cubesLocations).FirstOrDefault();
         }
 
         public void BeginWalk(State state, int stepInterval) // torefactor

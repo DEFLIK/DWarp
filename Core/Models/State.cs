@@ -24,7 +24,7 @@ namespace DWarp.Core.Models
         public int MapWidth => Map.GetLength(0);
         public int MapHeight => Map.GetLength(1);
 
-        public State(Level level)
+        public State(Level level) // ToRefactor...
         {
             Map = null;
             Player = new Player(Properties.Resources.Player);
@@ -33,14 +33,17 @@ namespace DWarp.Core.Models
             Time = level.TimeLimit;
             Map = MapCreator.CreateMap(level.MapPreset);
             Cubes = new Cube[Map.GetLength(0), Map.GetLength(1)];
+
             MapCreator.SpawnDynamicCreatures(this);
             if (level.Wires != null)
                 MapCreator.WireButtonsWithDoors(this);
             WallBuilder.SetWallsSprite(this);
+
             SpritesSize = 450 / Map.GetLength(0);
             CommandsStack = new CommandsStack<ICommand>(level.StepsLimit);
             WarpedPlayer.PickedCube = null;
             Player.PickedCube = null;
+
             if (IsWarped)
                 DoWarp();
             if (level.TimeLimit > 0)
@@ -60,18 +63,10 @@ namespace DWarp.Core.Models
                 Dummy.GetPath(this);
         }
 
-        public void Dispose() // ToReflection...
+        public void Dispose()
         {
-            //Map = null;
-            //Cubes = null;
-            //SpritesSize = 0;
-            //IsWarped = false;
-            //Player = null;
-            //CommandsStack = null;
-            //Time = 0;
             if(timer != null)
                 timer.Dispose();
-            //timer = null;
         }
 
         public void StartTimer() => timer.Start();

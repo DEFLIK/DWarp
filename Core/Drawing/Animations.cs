@@ -26,7 +26,7 @@ namespace DWarp.Core.Drawing
             timer.Start();
         }
 
-        public static void Open(Door door, int interval) // ToUpgrade...
+        public static void Open(Door door, int interval)
         {
             var sprite = door.Sprite;
             sprite.SizePercent = (sprite.SizePercent.Width, 100);
@@ -45,7 +45,7 @@ namespace DWarp.Core.Drawing
             timer.Start();
         }
 
-        public static void Close(Door door, int interval) // ToUpgrade..
+        public static void Close(Door door, int interval)
         {
             var sprite = door.Sprite;
             sprite.SizePercent = (sprite.SizePercent.Width, 0);

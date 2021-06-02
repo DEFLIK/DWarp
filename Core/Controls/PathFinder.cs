@@ -64,7 +64,7 @@ namespace DWarp.Core.Controls
             State state,
             int bestCost)
         {
-            var currentCost = bestCost + 1; //state.CellCost[nextPoint.X, nextPoint.Y]
+            var currentCost = bestCost + 1;
             if (!track.ContainsKey(nextPoint) || track[nextPoint].Cost > currentCost)
                 track[nextPoint] = new DijkstraData { Previous = sourcePoint, Cost = currentCost };
         }

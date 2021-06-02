@@ -79,7 +79,7 @@
     <Compile Include="Core\Controls\InputControl.cs" />
     <Compile Include="Core\Drawing\CreaturesSprites.cs" />
     <Compile Include="Core\Drawing\Menu.cs" />
-    <Compile Include="Core\Drawing\WallBuilder.cs" />
+    <Compile Include="Core\Controls\Factorys\WallBuilder.cs" />
     <Compile Include="Core\Models\Button.cs" />
     <Compile Include="Core\Models\Creature.cs" />
     <Compile Include="Core\Controls\Factorys\CreatureFactory.cs" />

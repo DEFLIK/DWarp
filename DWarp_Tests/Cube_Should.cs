@@ -8,7 +8,7 @@ using NUnit.Framework;
 namespace DWarp_Tests
 {
     [TestFixture]
-    public class Cube_Should //ToRefactor...
+    public class Cube_Should
     {
         private static string wiredTestMap = @"
 PC.
