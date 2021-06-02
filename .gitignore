@@ -1,0 +1,16 @@
+*.cache
+*.exe
+*.pdb
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.manifest
+*.testlog
