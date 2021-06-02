@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Timers;
+﻿using System.Timers;
 using DWarp.Core.Controls;
 using DWarp.Core.Controls.Factorys;
 using DWarp.Core.Drawing;
 using DWarp.Resources.Levels;
+using System.Drawing;
+
 
 namespace DWarp.Core.Models
 {

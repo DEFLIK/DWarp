@@ -35,7 +35,7 @@ namespace DWarp.Core.Drawing
             timer.Interval = interval;
             timer.Elapsed += (sender, args) =>
             {
-                if (-sprite.SizePercent.Height > 0)
+                if (sprite.SizePercent.Height <= 0)
                 {
                     timer.Dispose();
                     return;
@@ -48,7 +48,7 @@ namespace DWarp.Core.Drawing
         public static void Close(Door door, int interval) // ToUpgrade..
         {
             var sprite = door.Sprite;
-            sprite.SizePercent = (sprite.SizePercent.Width, 1);
+            sprite.SizePercent = (sprite.SizePercent.Width, 0);
 
             var timer = new Timer();
             timer.Interval = interval;

@@ -1,4 +1,6 @@
-﻿using DWarp.Core.Controls.Factorys;
+﻿using System;
+using System.Drawing;
+using DWarp.Core.Controls.Factorys;
 using DWarp.Core.Drawing;
 using DWarp.Core.Models;
 
@@ -41,13 +43,33 @@ namespace DWarp.Core.Controls
                 Animations.Fall(state, player.PickedCube, 1);
                 player.PickedCube.Sprite.Visible = true;
                 if (state.Dummy != null && state.Dummy.PickedCube == null)
-                    state.Dummy.BeginWalk(state);
+                    state.Dummy.BeginWalk(state, 1000);
                 player.PickedCube = null;
                 if (state.Map[player.Location.X, player.Location.Y] is Button)
                     (state.Map[player.Location.X, player.Location.Y] as Button).Update(state);
                 return true;
             }
             return false;
+        }
+
+        /// <summary>
+        /// Перемещает кубик из указанного места в другое
+        /// </summary>
+        /// <returns> Результат перемещения кубика: true - кубик перемещён, false - кубик остался на месте</returns>
+        public static bool Move(State state, Point location, Point newLocation)
+        {
+            var cube = state.Cubes[location.X, location.Y];
+            if (cube == null)
+                throw new ArgumentNullException($"There is no cube at {location.X} {location.Y} on map");
+            if (state.InsideMap(location) && state.CanMoveAt(newLocation))
+            {
+                state.Cubes[location.X, location.Y] = null;
+                state.Cubes[newLocation.X, newLocation.Y] = cube;
+                (cube.Location.X, cube.Location.Y) = (newLocation.X, newLocation.Y);
+                return true;
+            }
+            else
+                return false;
         }
     }
 }

@@ -19,7 +19,6 @@ namespace DWarp.Core.Models
         private Timer stepTimer = new Timer();
         private int stepCount = 0;
         private int maxStepsCount;
-        private int stepInterval = 1000; // ms
 
         public Dummy(Bitmap image, Point respawnPoint) : base(image, 5) 
         {
@@ -45,7 +44,7 @@ namespace DWarp.Core.Models
                 return pathFinder.GetPathsByDijkstra(state, Location, cubesLocations).FirstOrDefault(); // first to difficlt selector
         }
 
-        public void BeginWalk(State state) // torefactor
+        public void BeginWalk(State state, int stepInterval) // torefactor
         {
             var currentPath = GetPath(state);
             if (currentPath == null)
@@ -58,7 +57,7 @@ namespace DWarp.Core.Models
             stepTimer.Elapsed += (sender, args) =>
             {
                 stepCount++;
-                if (stepCount < maxStepsCount) // Dummy hasn't reached goal
+                if (stepCount < maxStepsCount) // Dummy hasn't reached goal yet
                 {
                     var step = currentPath.Path[stepCount];
                     if (state.CanMoveAt(step))
@@ -77,11 +76,13 @@ namespace DWarp.Core.Models
                     if (PickedCube == null)
                     {
                         CubeActions.Take(state, this);
-                        BeginWalk(state);
+                        BeginWalk(state, stepInterval);
+                        if (state.Map[Location.X, Location.Y].Type == CreatureType.CubeSpawn)
+                            CubeActions.Place(state, this);
                     }
                     else
                     {
-                        BeginWalk(state);
+                        BeginWalk(state, stepInterval);
                         CubeActions.Place(state, this);
                     }
                 }
