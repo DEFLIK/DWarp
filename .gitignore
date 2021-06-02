@@ -12,3 +12,6 @@
 *.mdb
 *.opendb
 *.VC.db
+*.manifest
+*.testlog
+*.dll
