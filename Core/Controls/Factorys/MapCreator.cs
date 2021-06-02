@@ -8,9 +8,9 @@ namespace DWarp.Core.Controls.Factorys
     public static class MapCreator
     {
 
-        public static Creature[,] CreateMap(string map, string separator = "\r\n")
+        public static Creature[,] CreateMap(string map)
         {
-            var rows = map.Replace(" ", string.Empty).Split(new[] { separator }, StringSplitOptions.RemoveEmptyEntries);
+            var rows = map.Replace(" ", string.Empty).Split(new[] { "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
             if (rows.Select(z => z.Length).Distinct().Count() != 1)
                 throw new Exception($"Wrong test map '{map}'");
             var result = new Creature[rows[0].Length, rows.Length];
