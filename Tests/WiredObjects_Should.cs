@@ -20,7 +20,7 @@ PC.
         [TestMethod]
         public void PressButton()
         {
-            var state = new State(new Level(wiredTestMap, 100, 0, wiredTestMapWire));
+            var state = new State(new Level(wiredTestMap, 100, null, 0, wiredTestMapWire));
             PlayerCommands.Move(state, 1, 0);
             PlayerCommands.TakeCube(state);
             PlayerCommands.Move(state, 0, 1);
@@ -33,7 +33,7 @@ PC.
         [TestMethod]
         public void ManipulateDoorByButtonWithButton()
         {
-            var state = new State(new Level(wiredTestMap, 100, 0, wiredTestMapWire));
+            var state = new State(new Level(wiredTestMap, 100, null, 0, wiredTestMapWire));
             PlayerCommands.Move(state, 1, 0);
             PlayerCommands.TakeCube(state);
             PlayerCommands.Move(state, 0, 1);

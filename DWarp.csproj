@@ -50,6 +50,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\GUI\Icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="nunit.framework, Version=3.12.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
@@ -70,10 +73,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Controls\AnimationControl.cs" />
     <Compile Include="Core\Controls\CubeActions.cs" />
     <Compile Include="Core\Controls\FpsCounter.cs" />
     <Compile Include="Core\Controls\PathFinder.cs" />
     <Compile Include="Core\Controls\PlayerCommands.cs" />
+    <Compile Include="Core\Controls\GameSoundPlayer.cs" />
     <Compile Include="Core\Drawing\Animations.cs" />
     <Compile Include="Core\Controls\WarpedPlayerCommands.cs" />
     <Compile Include="Core\Controls\InputControl.cs" />
@@ -94,6 +99,8 @@
     <Compile Include="Core\Models\Cube.cs" />
     <Compile Include="Core\Models\Door.cs" />
     <Compile Include="Core\Models\Dummy.cs" />
+    <Compile Include="Core\Drawing\UISprites.cs" />
+    <Compile Include="Core\Models\AmbientSounds.cs" />
     <Compile Include="Core\Models\PathWithCost.cs" />
     <Compile Include="Core\Models\Player.cs" />
     <Compile Include="Core\Models\State.cs" />
@@ -144,6 +151,7 @@
     <Content Include="Resources\Audio\WarpIn.wav" />
     <Content Include="Resources\Audio\WarpOut.wav" />
     <Content Include="Resources\GUI\Close.png" />
+    <Content Include="Resources\GUI\Icon.ico" />
     <Content Include="Resources\GUI\Instructions.png" />
     <Content Include="Resources\GUI\Logo.png" />
     <Content Include="Resources\GUI\Quit.png" />
@@ -152,6 +160,7 @@
     <Content Include="Resources\GUI\Tutorial.png" />
     <Content Include="Resources\GUI\Vignette.png" />
     <None Include="Resources\LowResSprites%28unused%29\Cube.png" />
+    <Content Include="Resources\GUI\Warp.png" />
     <Content Include="Resources\Sprites\ButtonF.png" />
     <Content Include="Resources\Sprites\ButtonT.png" />
     <Content Include="Resources\Sprites\Cube.png" />

@@ -1,5 +1,7 @@
-﻿using DWarp.Core.Controls.Factorys;
+﻿using System.Linq;
+using DWarp.Core.Controls.Factorys;
 using DWarp.Core.Models;
+using DWarp.Resources;
 
 namespace DWarp.Core.Controls
 {
@@ -21,8 +23,17 @@ namespace DWarp.Core.Controls
                 state.CommandsStack.AddCommand(new Move(state, state.WarpedPlayer, deltaX, deltaY));
                 state.Player.Location.X = resPosX;
                 state.Player.Location.Y = resPosY;
+                state.soundPlayer.PlayAsync("Step");
                 if (state.Map[resPosX, resPosY].Type == CreatureType.Exit)
-                    Game.ChangeLevel(state.CurrentLevel);
+                {
+                    if (state.CurrentLevel.NextLevelName == null)
+                    {
+                        Game.MainForm.ShowWinInfo();
+                        Game.ChangeLevel(Resources.Levels.Presets.Levels.First().Value);
+                        return;
+                    }
+                    Game.ChangeLevel(Resources.Levels.Presets.Levels[state.CurrentLevel.NextLevelName]);
+                }
             }
         }
 

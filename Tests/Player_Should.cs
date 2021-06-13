@@ -46,7 +46,7 @@ PC.
         [TestMethod]
         public void MoveCube()
         {
-            var state = new State(new Level(wiredTestMap, 100, 0, wiredTestMapWire));
+            var state = new State(new Level(wiredTestMap, 100, null, 0, wiredTestMapWire));
             var cube = state.Cubes[1, 0];
             PlayerCommands.Move(state, 1, 0);
             PlayerCommands.TakeCube(state);

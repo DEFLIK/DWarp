@@ -142,6 +142,9 @@
   <data name="Floor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\sprites\floor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\gui\icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Instructions" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\gui\instructions.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -216,6 +219,9 @@
   </data>
   <data name="Wall1111" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\sprites\walls\wall1111.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Warp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\gui\warp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="WarpAmbient" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\audio\warpambient.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

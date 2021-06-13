@@ -37,7 +37,8 @@
             this.ClientSize = new System.Drawing.Size(900, 700);
             this.DoubleBuffered = true;
             this.Name = "MainForm";
-            this.Text = "Game";
+            this.Text = "DWarp";
+            this.Icon = Properties.Resources.Icon;
             this.ResumeLayout(false);
 
         }

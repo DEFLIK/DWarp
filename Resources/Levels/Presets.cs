@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Drawing;
 using DWarp.Core.Models;
 
@@ -10,7 +11,7 @@ namespace DWarp.Resources.Levels
 
         static Presets()
         {
-            Levels.Add("defaultLevel", new Level
+            Levels.Add("ShowCase", new Level
             (
 @"
 K..+..+.
@@ -21,7 +22,7 @@ K..+..+.
 ..B+..+.
 .PC+..+.
 ...+..+.
-", 15, 30,
+", 15, "Hard", 30,
                 new Wire[]
                 {
                     new Wire(new Point(2, 1), new Point(3, 3)),
@@ -29,7 +30,7 @@ K..+..+.
                 }
             ));
 
-            Levels.Add("hardLevel", new Level
+            Levels.Add("Hard", new Level
             (
 @"
 ....+....
@@ -41,7 +42,7 @@ K..+..+.
 .........
 .B..B..B.
 ....B....
-", 28, 0,
+", 28, null, 0,
                 new Wire[]
                 {
                     new Wire(new Point(4, 7), new Point(1, 2)),

@@ -19,11 +19,23 @@ namespace DWarp.Core.Controls
                         PlayerCommands.PlaceCube(state);
                     break;
                 case Keys.B:
-                    Animations.Fall(state, state.Player, 10);
+                    Animations.Fall(state, state.Player);
                     break;
                 case Keys.F:
                     state.DoWarp();
-                    break;
+                    if (state.IsWarped)
+                    {
+                        Animations.WarpIn(UISprites.WarpVignette, Game.MainForm);
+                        state.soundPlayer.PlayAsync("WarpIn");
+                        state.soundPlayer.PlayAmbient(AmbientSounds.WarpAmbient);
+                    }
+                    else
+                    {
+                        Animations.WarpOut(UISprites.WarpVignette, Game.MainForm);
+                        state.soundPlayer.StopAmbient();
+                        state.soundPlayer.PlayAsync("WarpOut");
+                    };
+                        break;
                 case Keys.W:
                     if (!state.IsWarped)
                         PlayerCommands.Move(state, 0, -1);
@@ -54,9 +66,10 @@ namespace DWarp.Core.Controls
                     break;
                 case Keys.R:
                     Game.ChangeLevel(state.CurrentLevel);
+                    Animations.WarpOut(UISprites.WarpVignette, Game.MainForm);
                     break;
                 case Keys.Escape:
-                    Game.mainForm.MenuPanel.SwitchVisibility();
+                    Game.MainForm.MenuPanel.SwitchVisibility();
                     break;
             }
         }

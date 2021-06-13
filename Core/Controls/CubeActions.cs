@@ -40,7 +40,7 @@ namespace DWarp.Core.Controls
             {
                 state.Cubes[player.Location.X, player.Location.Y] = player.PickedCube;
                 (player.PickedCube.Location.X, player.PickedCube.Location.Y) = (player.Location.X, player.Location.Y);
-                Animations.Fall(state, player.PickedCube, 1);
+                Animations.Fall(state, player.PickedCube);
                 player.PickedCube.Sprite.Visible = true;
                 if (state.Dummy != null && state.Dummy.PickedCube == null)
                     state.Dummy.BeginWalk(state, 1000);

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Timers;
 using DWarp.Core.Drawing;
 using DWarp.Core.Models;
 using DWarp.Resources.Levels;
@@ -8,7 +7,7 @@ namespace DWarp.Core
 {
     public static class Game
     {
-        public static MainForm mainForm;
+        public static MainForm MainForm;
         /// <summary>
         /// Подготавливает игру и основную форму
         /// </summary>
@@ -16,16 +15,16 @@ namespace DWarp.Core
         /// <returns>Форма, в которой отображается игра</returns>
         public static MainForm Initialize(Level level)
         {
-            mainForm = new MainForm(new State(level));
-            return mainForm;
+            MainForm = new MainForm(new State(level));
+            return MainForm;
         }
 
         public static void ChangeLevel(Level level)
         {
-            if (mainForm.CurrentState != null)
-                mainForm.CurrentState.Dispose();
+            if (MainForm.CurrentState != null)
+                MainForm.CurrentState.Dispose();
             var newState = new State(level);
-            mainForm.ChangeState(newState);
+            MainForm.ChangeState(newState);
             GC.Collect();
         }
     }

@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using DWarp.Core;
 using DWarp.Core.Controls;
 using DWarp.Core.Models;
 using DWarp.Resources.Levels;
@@ -19,6 +20,7 @@ P..
         public void WarpBack()
         {
             var state = new State(new Level(moveTestMap, 100));
+            Game.Initialize(state.CurrentLevel);
             PlayerCommands.Move(state, 0, 1);
             PlayerCommands.Move(state, 0, 1);
             state.DoWarp();
@@ -32,6 +34,7 @@ P..
         public void WarpForward()
         {
             var state = new State(new Level(moveTestMap, 100));
+            Game.Initialize(state.CurrentLevel);
             PlayerCommands.Move(state, 0, 1);
             PlayerCommands.Move(state, 0, 1);
             PlayerCommands.Move(state, 1, 0);

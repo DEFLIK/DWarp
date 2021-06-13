@@ -4,13 +4,14 @@ using DWarp.Core.Controls.Factorys;
 using DWarp.Core.Drawing;
 using DWarp.Resources.Levels;
 using System.Drawing;
-
+using System.Windows.Media;
+using System.Media;
+using System.IO;
 
 namespace DWarp.Core.Models
 {
     public class State
     {
-        public readonly Level CurrentLevel;
         public Creature[,] Map;
         public Cube[,] Cubes;
         public int SpritesSize;
@@ -20,9 +21,11 @@ namespace DWarp.Core.Models
         public Dummy Dummy;
         public CommandsStack<ICommand> CommandsStack;
         public int Time;
-        private Timer timer;
         public int MapWidth => Map.GetLength(0);
         public int MapHeight => Map.GetLength(1);
+        public readonly Level CurrentLevel;
+        public readonly GameSoundPlayer soundPlayer = new GameSoundPlayer();
+        private Timer timer;
 
         public State(Level level) // ToRefactor...
         {
@@ -67,6 +70,7 @@ namespace DWarp.Core.Models
         {
             if(timer != null)
                 timer.Dispose();
+            soundPlayer.Dispose();
         }
 
         public void StartTimer() => timer.Start();
@@ -95,6 +99,9 @@ namespace DWarp.Core.Models
                 CommandsStack.Canceled.Clear();
                 Player.Location.X = WarpedPlayer.Location.X;
                 Player.Location.Y = WarpedPlayer.Location.Y;
+                Animations.WarpOut(UISprites.WarpVignette, Game.MainForm);
+                soundPlayer.StopAmbient();
+                soundPlayer.PlayAsync("WarpOut");
                 IsWarped = false;
             }
         }

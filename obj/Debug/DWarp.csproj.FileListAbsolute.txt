@@ -11,3 +11,16 @@ C:\Users\klimm\Desktop\DWarp\obj\Debug\DWarp.csproj.CopyComplete
 C:\Users\klimm\Desktop\DWarp\obj\Debug\DWarp.exe
 C:\Users\klimm\Desktop\DWarp\obj\Debug\DWarp.pdb
 C:\Users\klimm\Desktop\DWarp\obj\Debug\DWarp.Properties.Resources.resources
+C:\Users\klimm\Desktop\source code\bin\Debug\DWarp.exe.config
+C:\Users\klimm\Desktop\source code\bin\Debug\DWarp.exe
+C:\Users\klimm\Desktop\source code\bin\Debug\DWarp.pdb
+C:\Users\klimm\Desktop\source code\bin\Debug\nunit.framework.dll
+C:\Users\klimm\Desktop\source code\bin\Debug\nunit.framework.pdb
+C:\Users\klimm\Desktop\source code\bin\Debug\nunit.framework.xml
+C:\Users\klimm\Desktop\source code\obj\Debug\DWarp.csprojAssemblyReference.cache
+C:\Users\klimm\Desktop\source code\obj\Debug\DWarp.Properties.Resources.resources
+C:\Users\klimm\Desktop\source code\obj\Debug\DWarp.csproj.GenerateResource.cache
+C:\Users\klimm\Desktop\source code\obj\Debug\DWarp.csproj.CoreCompileInputs.cache
+C:\Users\klimm\Desktop\source code\obj\Debug\DWarp.csproj.CopyComplete
+C:\Users\klimm\Desktop\source code\obj\Debug\DWarp.exe
+C:\Users\klimm\Desktop\source code\obj\Debug\DWarp.pdb

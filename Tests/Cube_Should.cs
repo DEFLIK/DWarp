@@ -19,7 +19,7 @@ PC.
         [TestMethod]
         public void Move()
         {
-            var state = new State(new Level(wiredTestMap, 100, 0, wiredTestMapWire));
+            var state = new State(new Level(wiredTestMap, 100, null, 0, wiredTestMapWire));
             var cube = state.Cubes[1, 0];
             CubeActions.Move(state, cube.Location, new Point(2, 2));
             Assert.AreEqual(cube.Location, new Point(2,2));

@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Windows.Forms;
 using DWarp.Core;
-using DWarp.Core.Drawing;
 using DWarp.Resources.Levels;
 
 namespace DWarp

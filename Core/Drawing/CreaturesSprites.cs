@@ -15,7 +15,7 @@ namespace DWarp.Core.Drawing
             Dynamic.Add(state.Player);
             state.Player.Sprite.Image.MakeTransparent(Color.White);
             Dynamic.Add(state.WarpedPlayer);
-            SetAlphaBending(state.WarpedPlayer.Sprite.Image, 140);
+            Sprite.SetAlphaBending(state.WarpedPlayer.Sprite.Image, 140);
             state.WarpedPlayer.Sprite.Image.MakeTransparent(Color.White);
             if (state.Dummy != null)
             {

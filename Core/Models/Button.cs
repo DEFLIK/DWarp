@@ -22,9 +22,9 @@ namespace DWarp.Core.Models
             Sprite.Image = Pressed ? pressedImage : unpressedImage;
             LinkedDoor.Opened = Pressed;
             if (Pressed)
-                Animations.Open(LinkedDoor, 1);
+                Animations.Open(LinkedDoor);
             else
-                Animations.Close(LinkedDoor, 1);
+                Animations.Close(LinkedDoor);
         }
     }
 }

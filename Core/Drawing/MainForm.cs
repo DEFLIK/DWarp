@@ -30,7 +30,6 @@ namespace DWarp.Core.Drawing
                 InitializeInvalidater();
 
             MenuPanel = new Menu(this);
-            var vignette = new Sprite(new Rectangle(0, 0, ClientSize.Width, ClientSize.Height), Properties.Resources.Vignette, null);
             var drawWires = false;
 
             var controlTable = new TableLayoutPanel();
@@ -53,7 +52,12 @@ namespace DWarp.Core.Drawing
                 if (drawWires)
                     DrawWires(args);
                 args.Graphics.ResetTransform();
-                args.Graphics.DrawImage(vignette.Image, vignette.Rectangle);
+                args.Graphics.DrawImage(UISprites.Vignette.Image, UISprites.Vignette.Rectangle);
+                if (UISprites.WarpVignette.Visible)
+                {
+                    args.Graphics.DrawImage(UISprites.WarpVignette.Image, UISprites.WarpVignette.Rectangle);
+                    UpdateUISprite(UISprites.WarpVignette);
+                }
                 UpdateGameInfo(args.Graphics);
                 FpsCounter.Elapsed();
             };
@@ -70,7 +74,8 @@ namespace DWarp.Core.Drawing
                 MenuPanel.LevelsTable.Size = new Size(ClientSize.Width, ClientSize.Height / 2);
                 MenuPanel.LevelsTable.Location = new Point(ClientSize.Width / 2 - MenuPanel.LevelsTable.Width / 2, ClientSize.Height / 2 - MenuPanel.LevelsTable.Height / 2);
                 MenuPanel.InstructionImage.Size = ClientSize;
-                UpdateGUISprite(vignette);
+                UpdateUISprite(UISprites.Vignette);
+                UpdateUISprite(UISprites.WarpVignette);
             };
 
             MouseWheel += (sender, args) => InputControl.ApllyMouseScroll(CurrentState, args.Delta);
@@ -99,15 +104,21 @@ namespace DWarp.Core.Drawing
                     wire.Door.Y * CurrentState.SpritesSize);
         }
 
-        public void UpdateGameInfo(Graphics g)
+        private void UpdateGameInfo(Graphics g)
         {
-            g.DrawString($"{CurrentState.CommandsStack.Stack.Count} / {CurrentState.CommandsStack.Limit}", new Font("Arial", 15, FontStyle.Bold), Brushes.AntiqueWhite, new Point(ClientSize.Width - 70, ClientSize.Height - 30));
+            g.DrawString($"{CurrentState.CommandsStack.Stack.Count} / {CurrentState.CommandsStack.Limit}", 
+                new Font("Arial", 15, FontStyle.Bold), 
+                CurrentState.CommandsStack.Stack.Count == CurrentState.CommandsStack.Limit ? Brushes.Red : Brushes.AntiqueWhite, 
+                new Point(ClientSize.Width - 70, ClientSize.Height - 30));
             if (CurrentState.CurrentLevel.TimeLimit > 0)
-                g.DrawString($"TIME LEFT: {CurrentState.Time}", new Font("Arial", 15, FontStyle.Bold), CurrentState.Time == CurrentState.CurrentLevel.TimeLimit ? Brushes.DarkRed : Brushes.Red, new Point(0, ClientSize.Height - 30));
+                g.DrawString($"TIME LEFT: {CurrentState.Time}", 
+                    new Font("Arial", 15, FontStyle.Bold), 
+                    CurrentState.Time == CurrentState.CurrentLevel.TimeLimit ? Brushes.DarkRed : Brushes.Red, 
+                    new Point(0, ClientSize.Height - 30));
             g.DrawString($"FPS: {FpsCounter.GetFps()}", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, Point.Empty);
         }
 
-        public void DrawDynamicCreatures(Graphics g)
+        private void DrawDynamicCreatures(Graphics g)
         {
             foreach (var dynamicCreature in CurrentSprites.Dynamic)
                 if(dynamicCreature.Sprite.Visible)
@@ -119,7 +130,7 @@ namespace DWarp.Core.Drawing
                 }
         }
 
-        public void DrawStaticCreatures(Graphics g)
+        private void DrawStaticCreatures(Graphics g)
         {
             foreach (var staticCreature in CurrentSprites.Static)
                 if (staticCreature.Sprite.Visible)
@@ -129,7 +140,7 @@ namespace DWarp.Core.Drawing
                 }
         }
 
-        public void UpdateCreatureSprite(Creature creature)
+        private void UpdateCreatureSprite(Creature creature)
         {
             creature.Sprite.Rectangle.X = CurrentState.SpritesSize * creature.Location.X - CurrentState.SpritesSize * CurrentState.Map.GetLength(0) / 2 + creature.Sprite.Offset.X;
             creature.Sprite.Rectangle.Y = CurrentState.SpritesSize * creature.Location.Y - CurrentState.SpritesSize * CurrentState.Map.GetLength(0) / 2 + creature.Sprite.Offset.Y;
@@ -137,10 +148,10 @@ namespace DWarp.Core.Drawing
             creature.Sprite.Rectangle.Height = CurrentState.SpritesSize * creature.Sprite.SizePercent.Height / 100;
         }
 
-        public void UpdateGUISprite(Sprite sprite)
+        private void UpdateUISprite(Sprite sprite)
         {
-            sprite.Rectangle.Width = ClientSize.Width + 5;
-            sprite.Rectangle.Height = ClientSize.Height + 5;
+            sprite.Rectangle.Width = (ClientSize.Width + 5) * sprite.SizePercent.Width / 100;
+            sprite.Rectangle.Height = (ClientSize.Height + 5) * sprite.SizePercent.Height / 100;
         }
 
         public void SetDoubleBuffered(Control control)
@@ -150,5 +161,8 @@ namespace DWarp.Core.Drawing
             PropertyInfo aProp = typeof(Control).GetProperty("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance);
             aProp.SetValue(control, true, null);
         }
+
+        public void ShowWinInfo() => 
+            MessageBox.Show("-Ты и вправду так сильно хочешь выбраться? Прости, но ты навсегда в моем цикле испытаний...\n\nИгра пройдена!", "???", MessageBoxButtons.OK);
     }
 }
