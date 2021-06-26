@@ -147,7 +147,15 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Audio\Button.wav" />
+    <Content Include="Resources\Audio\ButtonWarped.wav" />
+    <Content Include="Resources\Audio\CubePlace.wav" />
+    <Content Include="Resources\Audio\CubeTake.wav" />
+    <Content Include="Resources\Audio\MenuButton.wav" />
+    <Content Include="Resources\Audio\Step.wav" />
+    <Content Include="Resources\Audio\StepsOut.wav" />
     <Content Include="Resources\Audio\WarpAmbient.wav" />
+    <Content Include="Resources\Audio\WarpedStep.wav" />
     <Content Include="Resources\Audio\WarpIn.wav" />
     <Content Include="Resources\Audio\WarpOut.wav" />
     <Content Include="Resources\GUI\Close.png" />

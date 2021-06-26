@@ -24,7 +24,7 @@ namespace DWarp.Core.Controls
                 return false;
             warpedPlayer.Location.X += deltaX;
             warpedPlayer.Location.Y += deltaY;
-            state.soundPlayer.PlayAsync("WarpedStep");
+            GameSoundPlayer.PlayAsync("WarpedStep");
             return true;
         }
 
@@ -34,7 +34,7 @@ namespace DWarp.Core.Controls
                 return false;
             warpedPlayer.Location.X -= deltaX;
             warpedPlayer.Location.Y -= deltaY;
-            state.soundPlayer.PlayAsync("WarpedStep");
+            GameSoundPlayer.PlayAsync("WarpedStep");
             return true;
         }
 

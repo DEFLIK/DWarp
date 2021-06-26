@@ -22,6 +22,7 @@ namespace DWarp.Core.Controls
                 if (state.Map[player.Location.X, player.Location.Y] is Button)
                     (state.Map[player.Location.X, player.Location.Y] as Button).Update(state);
                 cube.Sprite.Visible = false;
+                GameSoundPlayer.PlayAsync("CubeTake");
                 return true;
             }
             return false;
@@ -47,6 +48,8 @@ namespace DWarp.Core.Controls
                 player.PickedCube = null;
                 if (state.Map[player.Location.X, player.Location.Y] is Button)
                     (state.Map[player.Location.X, player.Location.Y] as Button).Update(state);
+                else 
+                    GameSoundPlayer.PlayAsync("CubePlace"); 
                 return true;
             }
             return false;

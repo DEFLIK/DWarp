@@ -30,7 +30,7 @@ namespace DWarp.Core.Models
                 else
                     return pathFinder.GetPathsByDijkstra(state, Location, new List<Point>() { PickedCube.RespawnLocation }).FirstOrDefault();
             foreach (var cube in cubes)
-                if (cube != null)
+                if (cube != null && cube.Location != cube.RespawnLocation)
                     cubesLocations.Add(cube.Location);
             if (cubesLocations.Count == 0)
                 return pathFinder.GetPathsByDijkstra(state, Location, new List<Point>() { RespawnLocation }).FirstOrDefault();

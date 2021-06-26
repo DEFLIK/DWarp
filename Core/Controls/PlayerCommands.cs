@@ -12,7 +12,10 @@ namespace DWarp.Core.Controls
             if (state.CommandsStack.Stack.Count == 0 && state.CurrentLevel.TimeLimit > 0)
                 state.StartTimer();
             if (state.CommandsStack.Stack.Count >= state.CommandsStack.Limit)
+            {
+                GameSoundPlayer.PlayAsync("StepsOut");
                 return;
+            }
             var resPosX = state.Player.Location.X + deltaX;
             var resPosY = state.Player.Location.Y + deltaY;
             var mapSize = state.Map.GetLength(0);
@@ -23,7 +26,7 @@ namespace DWarp.Core.Controls
                 state.CommandsStack.AddCommand(new Move(state, state.WarpedPlayer, deltaX, deltaY));
                 state.Player.Location.X = resPosX;
                 state.Player.Location.Y = resPosY;
-                state.soundPlayer.PlayAsync("Step");
+                GameSoundPlayer.PlayAsync("Step");
                 if (state.Map[resPosX, resPosY].Type == CreatureType.Exit)
                 {
                     if (state.CurrentLevel.NextLevelName == null)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using DWarp.Core.Controls;
 using DWarp.Resources.Levels;
 
 namespace DWarp.Core.Drawing
@@ -67,7 +68,10 @@ namespace DWarp.Core.Drawing
             newButton.SizeMode = PictureBoxSizeMode.StretchImage;
             newButton.Image = image;
             if (action != null)
+            {
                 newButton.Click += action;
+                newButton.Click += (sender, args) => GameSoundPlayer.PlayAsync("MenuButton");
+            }
             return newButton;
         }
 
@@ -85,6 +89,7 @@ namespace DWarp.Core.Drawing
             linkedForm.SetDoubleBuffered(resultTable);
             var exitButton = InitializeLevelLabel("CLOSE", Color.DarkRed);
             exitButton.Click += (sender, args) => LevelsTable.Visible = false;
+            exitButton.Click += (sender, args) => GameSoundPlayer.PlayAsync("MenuButton");
             resultTable.Controls.Add(exitButton);
 
             foreach (var level in Presets.Levels)
@@ -92,6 +97,7 @@ namespace DWarp.Core.Drawing
                 var levelLabel = InitializeLevelLabel(level.Key, Color.White);
                 levelLabel.Click += (sender, args) =>
                 {
+                    GameSoundPlayer.PlayAsync("MenuButton");
                     Game.ChangeLevel(level.Value);
                     LevelsTable.Visible = false;
                     MainTable.Visible = false;

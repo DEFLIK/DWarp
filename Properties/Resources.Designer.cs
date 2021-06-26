@@ -61,6 +61,15 @@ namespace DWarp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Button {
+            get {
+                return ResourceManager.GetStream("Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap ButtonF {
@@ -81,6 +90,15 @@ namespace DWarp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream ButtonWarped {
+            get {
+                return ResourceManager.GetStream("ButtonWarped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Close {
@@ -97,6 +115,24 @@ namespace DWarp.Properties {
             get {
                 object obj = ResourceManager.GetObject("Cube", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream CubePlace {
+            get {
+                return ResourceManager.GetStream("CubePlace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream CubeTake {
+            get {
+                return ResourceManager.GetStream("CubeTake", resourceCulture);
             }
         }
         
@@ -171,6 +207,15 @@ namespace DWarp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream MenuButton {
+            get {
+                return ResourceManager.GetStream("MenuButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Player {
@@ -217,6 +262,24 @@ namespace DWarp.Properties {
             get {
                 object obj = ResourceManager.GetObject("Spawn", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Step {
+            get {
+                return ResourceManager.GetStream("Step", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream StepsOut {
+            get {
+                return ResourceManager.GetStream("StepsOut", resourceCulture);
             }
         }
         
@@ -416,6 +479,15 @@ namespace DWarp.Properties {
         internal static System.IO.UnmanagedMemoryStream WarpAmbient {
             get {
                 return ResourceManager.GetStream("WarpAmbient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream WarpedStep {
+            get {
+                return ResourceManager.GetStream("WarpedStep", resourceCulture);
             }
         }
         

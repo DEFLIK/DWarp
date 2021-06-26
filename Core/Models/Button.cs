@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using DWarp.Core.Controls;
 using DWarp.Core.Controls.Factorys;
 using DWarp.Core.Drawing;
 
@@ -18,6 +19,7 @@ namespace DWarp.Core.Models
 
         public void Update(State state)
         {
+            GameSoundPlayer.PlayAsync(state.IsWarped ? "ButtonWarped" : "Button");
             Pressed = state.Cubes[Location.X, Location.Y] is Cube;
             Sprite.Image = Pressed ? pressedImage : unpressedImage;
             LinkedDoor.Opened = Pressed;

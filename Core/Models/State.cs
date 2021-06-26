@@ -24,7 +24,6 @@ namespace DWarp.Core.Models
         public int MapWidth => Map.GetLength(0);
         public int MapHeight => Map.GetLength(1);
         public readonly Level CurrentLevel;
-        public readonly GameSoundPlayer soundPlayer = new GameSoundPlayer();
         private Timer timer;
 
         public State(Level level) // ToRefactor...
@@ -59,7 +58,10 @@ namespace DWarp.Core.Models
                 {
                     Time--;
                     if (Time == 0)
+                    {
+                        Animations.WarpOut(UISprites.WarpVignette, Game.MainForm);
                         Game.ChangeLevel(CurrentLevel);
+                    }
                 };
             }
             if(Dummy != null)
@@ -70,7 +72,7 @@ namespace DWarp.Core.Models
         {
             if(timer != null)
                 timer.Dispose();
-            soundPlayer.Dispose();
+            GameSoundPlayer.Dispose();
         }
 
         public void StartTimer() => timer.Start();
@@ -78,9 +80,13 @@ namespace DWarp.Core.Models
         public void DoWarp()
         {
             if (!IsWarped)
+            {
                 IsWarped = true;
+                WarpedPlayer.Sprite.Visible = true;
+            }
             else
             {
+                WarpedPlayer.Sprite.Visible = false;
                 if (WarpedPlayer.PickedCube != null)
                     CubeActions.Place(this, WarpedPlayer);
                 CommandsStack.ResetBack();
@@ -94,14 +100,15 @@ namespace DWarp.Core.Models
         {
             if (IsWarped)
             {
+                WarpedPlayer.Sprite.Visible = false;
                 if (WarpedPlayer.PickedCube != null)
                     CubeActions.Place(this, WarpedPlayer);
                 CommandsStack.Canceled.Clear();
                 Player.Location.X = WarpedPlayer.Location.X;
                 Player.Location.Y = WarpedPlayer.Location.Y;
                 Animations.WarpOut(UISprites.WarpVignette, Game.MainForm);
-                soundPlayer.StopAmbient();
-                soundPlayer.PlayAsync("WarpOut");
+                GameSoundPlayer.StopAmbient();
+                GameSoundPlayer.PlayAsync("WarpOut");
                 IsWarped = false;
             }
         }

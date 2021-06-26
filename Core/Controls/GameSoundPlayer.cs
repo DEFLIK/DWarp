@@ -5,33 +5,35 @@ using System.Windows.Media;
 
 namespace DWarp.Core.Controls
 {
-    public class GameSoundPlayer
+    public static class GameSoundPlayer
     {
-        private MediaPlayer mediaPlayer = new MediaPlayer();
-        private SoundPlayer loopSoundPlayer = new SoundPlayer();
+        private static MediaPlayer mediaPlayer = new MediaPlayer();
+        private static SoundPlayer loopSoundPlayer = new SoundPlayer();
         
-        public void PlayAsync(string soundName)
+        public static void PlayAsync(string soundName)
         {
-            //mediaPlayer.Open(new Uri($"{AppDomain.CurrentDomain.BaseDirectory}\\Resources\\Audio\\{soundName}.wav")); // Build settings
-            mediaPlayer.Open(new Uri($"{Path.GetFullPath(@"..\..\")}\\Resources\\Audio\\{soundName}.wav")); //Project settings
-            mediaPlayer.Play();
+            mediaPlayer.Dispatcher.Invoke(() =>
+            {
+                //mediaPlayer.Open(new Uri($"{AppDomain.CurrentDomain.BaseDirectory}\\Resources\\Audio\\{soundName}.wav")); // Build settings
+                mediaPlayer.Open(new Uri($"{Path.GetFullPath(@"..\..\")}\\Resources\\Audio\\{soundName}.wav")); // Project settings
+                mediaPlayer.Play();
+            });
         }
 
-        public void PlayAmbient(Stream stream)
+        public static void PlayAmbient(Stream stream)
         {
             loopSoundPlayer.Stream = stream;
-            loopSoundPlayer.Play();
+            loopSoundPlayer.PlayLooping();
         }
 
-        public void StopAmbient() => loopSoundPlayer.Stop();
+        public static void StopAmbient() => loopSoundPlayer.Stop();
 
-        public void Dispose()
+        public static void Dispose()
         {
-            mediaPlayer.Stop();
             loopSoundPlayer.Stop();
             if(loopSoundPlayer.Stream != null)
                 loopSoundPlayer.Stream.Position = 0;
-            loopSoundPlayer.Dispose();
+            //loopSoundPlayer.Dispose();
         }
     }
 }

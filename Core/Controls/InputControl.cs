@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Windows.Forms;
 using DWarp.Core.Drawing;
 using DWarp.Core.Models;
 
@@ -26,14 +27,14 @@ namespace DWarp.Core.Controls
                     if (state.IsWarped)
                     {
                         Animations.WarpIn(UISprites.WarpVignette, Game.MainForm);
-                        state.soundPlayer.PlayAsync("WarpIn");
-                        state.soundPlayer.PlayAmbient(AmbientSounds.WarpAmbient);
+                        GameSoundPlayer.PlayAsync("WarpIn");
+                        GameSoundPlayer.PlayAmbient(AmbientSounds.WarpAmbient);
                     }
                     else
                     {
                         Animations.WarpOut(UISprites.WarpVignette, Game.MainForm);
-                        state.soundPlayer.StopAmbient();
-                        state.soundPlayer.PlayAsync("WarpOut");
+                        GameSoundPlayer.StopAmbient();
+                        GameSoundPlayer.PlayAsync("WarpOut");
                     };
                         break;
                 case Keys.W:
@@ -43,6 +44,9 @@ namespace DWarp.Core.Controls
                 case Keys.A:
                     if (!state.IsWarped)
                         PlayerCommands.Move(state, -1, 0);
+                    if (state.Player.FacingRight)
+                        state.Player.Sprite.Image.RotateFlip(RotateFlipType.RotateNoneFlipX);
+                    state.Player.FacingRight = false;
                     break;
                 case Keys.S:
                     if (!state.IsWarped)
@@ -51,6 +55,9 @@ namespace DWarp.Core.Controls
                 case Keys.D:
                     if (!state.IsWarped)
                         PlayerCommands.Move(state, 1, 0);
+                    if (!state.Player.FacingRight)
+                        state.Player.Sprite.Image.RotateFlip(RotateFlipType.RotateNoneFlipX);
+                    state.Player.FacingRight = true;
                     break;
                 case Keys.Q:
                     if (state.IsWarped)
